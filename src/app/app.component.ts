@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatasourceService } from './services/datasource.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'gh-open-data-page';
+  readonly datasource = this.datasourceService.getDataAsDatasource();
+
+  constructor(private datasourceService: DatasourceService){
+  }
+  
 }
