@@ -20,6 +20,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
+        
+      - name: Create datasource.json
+        uses: ./
+        with:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Setup Node.js environment
