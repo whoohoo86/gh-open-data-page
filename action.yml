@@ -1,0 +1,9 @@
+name: 'Create datasource.json'
+inputs:
+  GH_TOKEN:
+    description: 'Github token'
+    default: $
+    required: true
+runs:
+  using: 'node14'
+  main: 'createDatasourceJson.gh-action.js'
