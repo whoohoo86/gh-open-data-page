@@ -51,7 +51,7 @@ function run() {
             popularity: (repo.stargazers_count || 0) * 1.5 + (repo.forks_count || 0),
             description: repo.description || ''
         };
-        fs.writeFileSync('/src/app/data/datasource.json', JSON.stringify(datasourceJson));
+        fs.writeFileSync('./src/app/data/datasource.json', JSON.stringify(datasourceJson));
     });
 }
 run().catch(err => core.setFailed("Workflow to create datasource.json failed!\nError:" + err.message));
