@@ -4,10 +4,6 @@ inputs:
     description: 'Github token'
     default: $
     required: true
-   CWD:
-    description: 'Working Directory'
-    default: $GITHUB_WORKSPACE
-    required: false
 runs:
   using: 'node12'
   main: 'createDatasourceJson.gh-action.js'
