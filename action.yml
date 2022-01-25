@@ -6,7 +6,7 @@ inputs:
     required: true
   CWD:
     description: 'Working Directory'
-    default: $GITHUB_WORKSPACE
+    default: ''
     required: false
 runs:
   using: 'node12'
