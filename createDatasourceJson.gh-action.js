@@ -41,6 +41,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 const fs = __importStar(__nccwpck_require__(7147));
+const path = __importStar(__nccwpck_require__(1017));
 const multimatch_1 = __importDefault(__nccwpck_require__(5225));
 const md_helpers_1 = __nccwpck_require__(7603);
 const _ = __importStar(__nccwpck_require__(250));
@@ -190,6 +191,7 @@ function run() {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const ghToken = core.getInput('GH_TOKEN');
+        const cwd = core.getInput('CWD');
         const octokit = github.getOctokit(ghToken);
         const { data: repo } = yield octokit.rest.repos.get(github.context.repo);
         const branch = repo.default_branch || DefaultBranch;
@@ -211,7 +213,8 @@ function run() {
         const datasourceJson = Object.assign(Object.assign({ branch,
             externalLinks,
             doi }, (yield zenodoContent$)), { readme: yield readmeContent$, licence: ((_a = repo.license) === null || _a === void 0 ? void 0 : _a.spdx_id) || '', tags: (yield topics$).data.names, content: _.orderBy(content, x => `${x.$type}_${x.path}`) });
-        fs.writeFileSync('./src/app/data/datasource.json', JSON.stringify(datasourceJson));
+        const dir = path.join(cwd, './src/app/data/datasource.json');
+        fs.writeFileSync(dir, JSON.stringify(datasourceJson));
     });
 }
 run().catch(err => core.setFailed("Workflow to create datasource.json failed!\nError:" + err.message));
