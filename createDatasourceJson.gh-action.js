@@ -195,6 +195,7 @@ function run() {
         const octokit = github.getOctokit(ghToken);
         const { data: repo } = yield octokit.rest.repos.get(github.context.repo);
         const branch = repo.default_branch || DefaultBranch;
+        core.info(`Creating datasource.json for repo '${github.context.repo.owner}/${github.context.repo.repo}'.`);
         const topics$ = octokit.rest.repos.getAllTopics(github.context.repo);
         const externalLinks = [
             { $type: 'github', url: repo.html_url }
@@ -214,6 +215,7 @@ function run() {
             externalLinks,
             doi }, (yield zenodoContent$)), { readme: yield readmeContent$, licence: ((_a = repo.license) === null || _a === void 0 ? void 0 : _a.spdx_id) || '', tags: (yield topics$).data.names, content: _.orderBy(content, x => `${x.$type}_${x.path}`) });
         const dir = path.join(cwd, './src/app/data/datasource.json');
+        core.info(`Writing datasource.json to '${dir}'.`);
         fs.writeFileSync(dir, JSON.stringify(datasourceJson));
     });
 }
