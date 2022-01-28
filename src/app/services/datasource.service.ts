@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import data from '../data/datasource.json';
-import { Datasource, DatasourceContent, ExternalLink } from '../models/datasource';
+import data from '../data/datasource.data.json';
+import { OpenDataDatasource, DatasourceContent, ExternalLink } from '../models/datasource';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class DatasourceService {
 
   constructor() { }
 
-  getDataAsDatasource(): Datasource {
+  getDataAsDatasource(): OpenDataDatasource {
     return { ...data, lastUpdated: new Date(data.lastUpdated), externalLinks: data.externalLinks as ExternalLink[], content: data.content as DatasourceContent[] };
   }
 }
