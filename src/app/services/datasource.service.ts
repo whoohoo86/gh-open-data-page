@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import data from '../data/datasource.data.json';
+import data from '../data/datasource.json';
 import { OpenDataDatasource, DatasourceContent, ExternalLink } from '../models/datasource';
 
 @Injectable({

@@ -1,0 +1,18 @@
+<h2>Autor:innen</h2>
+
+<div class="name-container author-container">
+    <div class="author" *ngFor="let author of authors">
+        {{author}}
+    </div>
+</div>
+
+<ng-container *ngIf="contributors && contributors.length > 0">
+    <h2>Beitragende</h2>
+
+    <div class="name-container contrib-container">
+        <div class="contrib" *ngFor="let contrib of contributors" (mouseenter)="showRole = contrib" (mouseleave)="showRole = undefined">
+            {{contrib.name}}
+            <span *ngIf="showRole === contrib" class="contrib-role">{{contrib.role | contributorRoleLabel}}</span>
+        </div>
+    </div>
+</ng-container>

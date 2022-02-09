@@ -1,0 +1,53 @@
+<div class="datasource-content-preview-component mat-elevation-z9" *ngIf="content && content.$type === 'file'">
+  <mat-toolbar class="header">
+    <span class="title">
+      Vorschau: {{content.name}}
+      <span class="lfs" *ngIf="content.lfs">LFS</span>
+    </span>
+    
+    <a mat-button [href]="content.visitUrl" target="_blank">
+      Quelle ansehen
+    </a>
+    <a mat-button (click)="startDownload(content)">
+      <mat-icon>file_download</mat-icon>
+      Download
+    </a>
+    <button mat-icon-button class="close-button" (click)="doClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div *ngIf="contentPathExt && content.$type === 'file'" [ngSwitch]="contentPathExt" class="preview-container">
+    <ng-container *ngSwitchCase="'md'">
+      <app-markdown-preview [baseUrl]="baseUrl" [url]="content.previewUrl"></app-markdown-preview>
+    </ng-container>
+    <ng-container *ngSwitchCase="'pdf'">
+      <app-pdf-preview [pdfSrc]="content.previewUrl"></app-pdf-preview>
+    </ng-container>
+    <ng-container *ngSwitchCase="'csv'">
+      <app-csv-table [csvUrl]="content.previewUrl" [isLfs]="content.lfs" [fileName]="content.name"></app-csv-table>
+    </ng-container>
+    <ng-container *ngSwitchCase="'jpg'">
+      <app-image-preview [imgUrl]="content.previewUrl"></app-image-preview>
+    </ng-container>
+    <ng-container *ngSwitchCase="'jpeg'">
+      <app-image-preview [imgUrl]="content.previewUrl"></app-image-preview>
+    </ng-container>
+    <ng-container *ngSwitchCase="'png'">
+      <app-image-preview [imgUrl]="content.previewUrl"></app-image-preview>
+    </ng-container>
+    <div *ngSwitchDefault class="no-preview-available">
+      <p class="title mat-headline">
+        Vorschau leider nicht möglich
+        <mat-icon class="sad-face">sentiment_very_dissatisfied</mat-icon>
+      </p>
+      <p class="hint mat-hint">
+        Die Datei <b><i>{{content.name}}</i></b> kann nicht angezeigt werden, da für die Endung
+        <b><i>{{contentPathExt}}</i></b> keine geignete Vorschau verfügbar ist.
+      </p>
+      <p class="visit-link mat-hint">
+        Sie können sich die Daten in einem seperaten Tab ansehen, indem Sie auf diesen <a [href]="content.visitUrl" target="_blank">Link</a> klicken.
+      </p>
+    </div>
+  </div>
+</div>

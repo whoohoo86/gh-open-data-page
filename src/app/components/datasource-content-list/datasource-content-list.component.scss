@@ -1,0 +1,49 @@
+.file-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  max-width: calc(100% - 40px);
+}
+
+.file-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.lfs-mark {
+  color: teal;
+  margin: 0 1em;
+}
+
+.folder-name {
+  flex: 1;
+  cursor: pointer;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-tree-invisible {
+  display: none;
+}
+
+.content-tree .mat-nested-tree-node div[role="group"] {
+  padding-left: 40px;
+}
+
+.icon-wrapper {
+  padding: 0;
+  min-width: 0;
+  width: 40px;
+  flex-shrink: 0;
+  text-align: center;
+}

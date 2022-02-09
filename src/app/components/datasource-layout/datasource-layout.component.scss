@@ -1,0 +1,62 @@
+.datasource-layout-container {
+    max-width: 100%;
+    
+
+    .date-external-link-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .title-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .contributor-container {
+    }
+
+    .abstract-container {
+    }
+
+    .tag-container {
+    }
+
+    .cite-container {
+    }
+
+    .content-container {
+    }
+
+    .doc-container {
+    }
+}
+
+.datasource-small-layout-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.datasource-wide-layout-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .left-column {
+        flex: 1;
+        max-width: calc(100% - 350px);
+
+        // background: orange;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right-column {
+        flex: 0;
+        min-width: 350px;
+        
+        // background: pink;
+        display: flex;
+        flex-direction: column;
+    }
+}

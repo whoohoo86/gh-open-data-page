@@ -1,4 +1,4 @@
-export interface Datasource {
+export interface OpenDataDatasource {
     id: string;
     branch: string;
     name: string;
@@ -8,7 +8,7 @@ export interface Datasource {
     tags: string[];
     doi: string;
     lastUpdated: Date;
-    contributors: Contributor[];
+    contributors: { name: string; role: string }[];
     authors: string[];
     externalLinks: ExternalLink[];
     readme: string;
@@ -17,13 +17,13 @@ export interface Datasource {
 }
 
 export interface ExternalLink {
-	$type: 'github' | 'zenodo';
-	url: string;
+    $type: 'github' | 'zenodo';
+    url: string;
 }
 
 export interface Contributor {
-	name: string;
-	role: string;
+    name: string;
+    role: string;
 }
 
 export interface FileDatasourceContent {
@@ -40,7 +40,7 @@ export interface FolderDatasourceContent {
     $type: 'folder';
     name: string;
     path: string;
-    
+
     content: DatasourceContent[];
 }
 

@@ -1,0 +1,27 @@
+.name-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.25em;
+}
+
+.contrib-container {
+    .contrib {
+
+        position: relative;
+        padding-bottom: 1.25em;
+        // color: red;
+
+        .contrib-role{
+            position: absolute;
+            top: 1.25em;
+            left: 0;
+            color: orange;
+        }
+    }
+}
+
+.author-container {
+    .author {
+    }
+}

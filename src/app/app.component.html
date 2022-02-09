@@ -1,5 +1,49 @@
-<h1>Data</h1>
+<div class="datasource-page">
+  <app-datasource-layout>
+      <app-datasource-layout-item position="date-external-link">
+          <div class="date">{{datasource.lastUpdated | date}}</div>
+          <div class="link-container">
+              <a class="link external-link" *ngFor="let link of datasource.externalLinks"
+                  [ngClass]="link.$type + '-link'" [href]="link.url" target="_blank"></a>
+          </div>
+      </app-datasource-layout-item>
 
-<pre>
-   {{datasource | json}}
-</pre>
+      <app-datasource-layout-item position="title">
+          <div class="title mat-headline">{{datasource.name}}</div>
+          <app-datasource-licence [datasource]="datasource"></app-datasource-licence>
+      </app-datasource-layout-item>
+
+      <app-datasource-layout-item position="contributor">
+          <app-datasource-contributor-list [authors]="datasource.authors" [contributors]="datasource.contributors">
+          </app-datasource-contributor-list>
+      </app-datasource-layout-item>
+
+      <app-datasource-layout-item position="abstract">
+          <h2 class="mat-title">Zusammenfassung</h2>
+          <div class="abstract" [innerHtml]="datasource.description | safeHtml"> </div>
+      </app-datasource-layout-item>
+
+      <app-datasource-layout-item position="tag">
+          <h2 class="mat-title">Tags</h2>
+          <app-datasource-tags [datasource]="datasource"></app-datasource-tags>
+      </app-datasource-layout-item>
+
+      <app-datasource-layout-item position="cite">
+          <h2 class="mat-title">Zitieren</h2>
+          <app-datasource-cite [datasource]="datasource"></app-datasource-cite>
+      </app-datasource-layout-item>
+
+      <app-datasource-layout-item position="content">
+          <h2 class="mat-title">Dateien / Inhalt</h2>
+          <app-datasource-content-list [datasource]="datasource"></app-datasource-content-list>
+      </app-datasource-layout-item>
+
+      <app-datasource-layout-item position="doc">
+          <!-- *ngIf="getUrls(datasource) as urls" -->
+          <h2 class="mat-title">Dokumentation</h2>
+          <app-datasource-readme [readme]="datasource.readme" class="markdown-preview"></app-datasource-readme>
+          <!-- <app-markdown-preview [url]="urls.doc" [baseUrl]="urls.base" class="markdown-preview"> </app-markdown-preview> -->
+      </app-datasource-layout-item>
+
+  </app-datasource-layout>
+</div>
