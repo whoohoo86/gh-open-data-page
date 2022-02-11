@@ -47,7 +47,7 @@ import { ContributorRoleLabelPipe } from './pipes/contributor-role-label.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppRoutingModule } from './app-routing.module';
 import { DatasourceContentPageComponent } from './pages/datasource-content-page/datasource-content-page.component';
-import { HomePageComponent } from './pages/home-page/home-page.component'
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 registerLocaleData(localeDe, 'de');
 
