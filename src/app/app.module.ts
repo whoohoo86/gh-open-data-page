@@ -44,7 +44,10 @@ import { AfterComponentInitDirective } from './directives/after-component-init.d
 import { FileDownloadComponent } from './components/file-download/file-download.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { ContributorRoleLabelPipe } from './pipes/contributor-role-label.pipe';
-import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { AppRoutingModule } from './app-routing.module';
+import { DatasourceContentPageComponent } from './pages/datasource-content-page/datasource-content-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component'
 
 registerLocaleData(localeDe, 'de');
 
@@ -89,7 +92,9 @@ function markedOptionsFactory(): MarkedOptions {
     DatasourceTagsComponent,
     AfterComponentInitDirective,
     DatasourceContributorListComponent,
-    FileDownloadComponent
+    FileDownloadComponent,
+    DatasourceContentPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -121,7 +126,8 @@ function markedOptionsFactory(): MarkedOptions {
     MatChipsModule,
     TableVirtualScrollModule,
     MatToolbarModule,
-    PortalModule
+    PortalModule,
+    AppRoutingModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },

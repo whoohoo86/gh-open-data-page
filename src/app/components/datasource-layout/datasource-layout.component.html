@@ -3,29 +3,14 @@
 
     <div class="date-external-link-container">
         <ng-template [cdkPortalOutlet]="portalsByPosition['date-external-link'] | async"></ng-template>
-        <!-- <div class="date">{{datasource.lastUpdated | date}}</div>
-            <div class="link-container">
-                <a class="link external-link" *ngFor="let link of datasource.externalLinks" [ngClass]="link.$type + '-link'"
-                    [href]="link.url" target="_blank"></a>
-            </div> -->
     </div>
 
     <div class="title-container">
         <ng-template [cdkPortalOutlet]="portalsByPosition['title'] | async"></ng-template>
-        <!-- <div class="title">{{datasource.name}}</div>
-            <div class="licence">
-                <mat-chip-list *ngIf="datasource.licence">
-                    <mat-chip color="primary" selected>{{datasource.licence}}</mat-chip>
-                </mat-chip-list>
-            </div> -->
     </div>
 
     <div class="contributor-container">
         <ng-template [cdkPortalOutlet]="portalsByPosition['contributor'] | async"></ng-template>
-        <!-- <div class="contributor" *ngFor="let contrib of datasource.contributors">
-                <div class="name">{{contrib.name}}</div>
-                <div class="role">{{contrib.role}}</div>
-            </div> -->
     </div>
 
     <div class="abstract-container">
@@ -72,8 +57,6 @@
                 <ng-template [cdkPortalOutlet]="portalsByPosition['abstract'] | async"></ng-template>
             </div>
 
-
-
             <div class="content-container">
                 <ng-template [cdkPortalOutlet]="portalsByPosition['content'] | async"></ng-template>
             </div>
@@ -90,7 +73,6 @@
 
             <div class="cite-container">
                 <ng-template [cdkPortalOutlet]="portalsByPosition['cite'] | async"></ng-template>
-
             </div>
         </div>
 

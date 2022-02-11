@@ -1,4 +1,5 @@
-<div class="datasource-page">
+<router-outlet></router-outlet>
+<!-- <div class="datasource-page">
   <app-datasource-layout>
       <app-datasource-layout-item position="date-external-link">
           <div class="date">{{datasource.lastUpdated | date}}</div>
@@ -38,12 +39,10 @@
           <app-datasource-content-list [datasource]="datasource"></app-datasource-content-list>
       </app-datasource-layout-item>
 
-      <app-datasource-layout-item position="doc">
-          <!-- *ngIf="getUrls(datasource) as urls" -->
-          <h2 class="mat-title">Dokumentation</h2>
-          <app-datasource-readme [readme]="datasource.readme" class="markdown-preview"></app-datasource-readme>
-          <!-- <app-markdown-preview [url]="urls.doc" [baseUrl]="urls.base" class="markdown-preview"> </app-markdown-preview> -->
-      </app-datasource-layout-item>
-
+      <app-datasource-layout-item position="doc"> -->
+          <!-- <h2 class="mat-title">Dokumentation</h2>
+          <app-datasource-readme [readme]="datasource.readme" class="markdown-preview"></app-datasource-readme> -->
+      <!-- </app-datasource-layout-item> -->
+<!-- 
   </app-datasource-layout>
-</div>
+</div> -->
