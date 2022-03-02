@@ -41,7 +41,7 @@
             // @if $is-dark {
             //     background-image: url("/assets/github-mark-light-64px.png");
             // } @else {
-            background-image: url('~/assets/github_logo.png');
+            background-image: url('../../../assets/github_logo.png');
             // }
         }
     
@@ -51,7 +51,7 @@
             // @if $is-dark {
             //     background-image: url("/assets/zenodo_logo_white.svg");
             // } @else {
-            background-image: url("~/assets/zenodo_logo.svg");
+            background-image: url("../../../assets/zenodo_logo.svg");
             // }
         }
     }
