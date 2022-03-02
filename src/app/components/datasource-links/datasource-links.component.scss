@@ -1,23 +1,21 @@
-
-
 @mixin datasource-links-component($theme) {
     $color-config: mat.get-color-config($theme);
     $accent-palette: map.get($color-config, "accent");
-    
+
     .datasource-link-component.link-container {
         // $img-width: 117px;
-    
+
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 25px;
-       
+
         // flex: 1;
         // max-width: $img-width * 2;
         // justify-content: flex-end;
-    
+
         // .link-wrapper {
-            
+
         // }
 
         .link-wrapper {
@@ -28,30 +26,30 @@
             background-color: mat.get-color-from-palette($accent-palette);
             padding: 0.75em;
         }
-    
+
         .link,
         .external-link {
             height: 48px;
             background-size: contain;
             background-repeat: no-repeat;
         }
-    
+
         .github-link {
             width: 117px;
             // @if $is-dark {
             //     background-image: url("/assets/github-mark-light-64px.png");
             // } @else {
-            background-image: url("~/assets/github_logo.png");
+            background-image: url("../../../assets/github_logo_black.png");
             // }
         }
-    
+
         .zenodo-link {
             width: 117px;
-    
+
             // @if $is-dark {
             //     background-image: url("/assets/zenodo_logo_white.svg");
             // } @else {
-            background-image: url("~/assets/zenodo_logo.svg");
+            background-image: url("../../../assets/zenodo_logo.svg");
             // }
         }
     }

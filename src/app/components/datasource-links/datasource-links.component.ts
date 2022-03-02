@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { OpenDataDatasource } from 'src/app/models/datasource';
+import { ExternalLink, OpenDataDatasource } from 'src/app/models/datasource';
+import { BaseHrefPipe } from 'src/app/pipes/base-href.pipe';
 
 @Component({
   selector: 'app-datasource-links',
