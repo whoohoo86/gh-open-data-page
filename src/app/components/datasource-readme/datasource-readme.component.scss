@@ -2,6 +2,10 @@
 @use '~@angular/material' as mat;
 @import "./../../../github-markdown.scss";
 
+::ng-deep .markdown-body markdown h2:first-child {
+    margin-top: 0;
+}
+
 @mixin datasource-readme-component($theme) {
     $color-config: mat.get-color-config($theme);
     $is-dark: map.get($color-config, "is-dark");

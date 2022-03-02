@@ -29,11 +29,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { CsvTableComponent } from './components/csv-table/csv-table.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { FormatIfNumberPipe } from './pipes/format-if-number.pipe';
-import { registerLocaleData } from '@angular/common';
+import { APP_BASE_HREF, PlatformLocation, registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { DatasourceCiteComponent } from './components/datasource-cite/datasource-cite.component';
 import { DatasourceLicenceComponent } from './components/datasource-licence/datasource-licence.component';
@@ -43,11 +44,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AfterComponentInitDirective } from './directives/after-component-init.directive';
 import { FileDownloadComponent } from './components/file-download/file-download.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatCardModule } from '@angular/material/card'
 import { ContributorRoleLabelPipe } from './pipes/contributor-role-label.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppRoutingModule } from './app-routing.module';
 import { DatasourceContentPageComponent } from './pages/datasource-content-page/datasource-content-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { RellaxDirective } from './directives/rellax.directive';
+import { EmbedPageComponent } from './pages/embed-page/embed-page.component';
+import { DatasourceCardComponent } from './components/datasource-card/datasource-card.component';
+import { DatasourceLinksComponent } from './components/datasource-links/datasource-links.component';
+import { BaseHrefPipe } from './pipes/base-href.pipe';
 
 registerLocaleData(localeDe, 'de');
 
@@ -69,6 +76,10 @@ function markedOptionsFactory(): MarkedOptions {
     smartLists: true,
     smartypants: false,
   };
+}
+
+function getBaseHref(platformLocation: PlatformLocation): string {
+  return platformLocation.getBaseHrefFromDOM();
 }
 
 @NgModule({
@@ -94,7 +105,12 @@ function markedOptionsFactory(): MarkedOptions {
     DatasourceContributorListComponent,
     FileDownloadComponent,
     DatasourceContentPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    RellaxDirective,
+    EmbedPageComponent,
+    DatasourceCardComponent,
+    DatasourceLinksComponent,
+    BaseHrefPipe
   ],
   imports: [
     BrowserAnimationsModule,
@@ -116,10 +132,12 @@ function markedOptionsFactory(): MarkedOptions {
     MatButtonModule,
     MatTableModule,
     ClipboardModule,
+    MatMenuModule,
     MatFormFieldModule,
     OverlayModule,
     MatTooltipModule,
     MatSnackBarModule,
+    MatCardModule,
     MatInputModule,
     MatSortModule,
     CdkScrollableModule,
@@ -131,7 +149,8 @@ function markedOptionsFactory(): MarkedOptions {
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },
-    { provide: OverlayContainer, useClass: FullscreenOverlayContainer }
+    { provide: OverlayContainer, useClass: FullscreenOverlayContainer },
+    { provide: APP_BASE_HREF, useFactory: getBaseHref, deps: [PlatformLocation] }
   ],
   bootstrap: [AppComponent]
 })

@@ -16,11 +16,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
     justify-content: center;
 
-    .loading-indicator{
+    height: 100%;
+    max-width: 100%;
 
+    .loading-indicator{
+        max-width: 100%;
+        
     }
 
     .lfs-indicator{

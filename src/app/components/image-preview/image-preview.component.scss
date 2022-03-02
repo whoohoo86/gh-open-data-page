@@ -1,6 +1,12 @@
 @use 'sass:map';
 @use '~@angular/material' as mat;
 
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
 @mixin image-preview-component($theme) {
     $color-config: mat.get-color-config($theme);
     $is-dark: map.get($color-config, "is-dark");

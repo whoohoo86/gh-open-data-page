@@ -9,7 +9,7 @@ export class DatasourceService {
 
   constructor() { }
 
-  getDataAsDatasource(): OpenDataDatasource {
+  getDatasource(): OpenDataDatasource {
     return { ...data, lastUpdated: new Date(data.lastUpdated), externalLinks: data.externalLinks as ExternalLink[], content: data.content as DatasourceContent[] };
   }
 }

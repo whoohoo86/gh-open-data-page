@@ -13,7 +13,7 @@ export class DatasourceLayoutItemComponent implements OnInit {
 
   @ViewChild(TemplateRef, { static: true }) _implicitContent: TemplateRef<any> | null = null;
 
-  @Input() position: DatasourceLayoutItemPosition = 'date-external-link';
+  @Input() position: DatasourceLayoutItemPosition = 'abstract';
 
   private _contentPortal: TemplatePortal | null = null;
 

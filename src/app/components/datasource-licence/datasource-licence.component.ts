@@ -9,6 +9,7 @@ import { OpenDataDatasource } from 'src/app/models/datasource';
 export class DatasourceLicenceComponent implements OnInit, OnChanges {
 
   @Input() datasource?: OpenDataDatasource;
+  @Input() mode?: 'large' | 'small' = 'small'
   licenceUrl = '#';
 
   constructor() { }

@@ -1,62 +1,217 @@
-.datasource-layout-container {
-    max-width: 100%;
-    
+@use 'sass:map';
+@use "sass:math";
+@use '~@angular/material' as mat;
 
-    .date-external-link-container {
-        display: flex;
-        flex-direction: row;
+$default-margin-bottom: 20px;
+$default-margin-horizontal: 70px;
+
+@mixin datasource-layout-component($theme) {
+    $color-config: mat.get-color-config($theme);
+    $primary-palette: map.get($color-config, "primary");
+
+    .datasource-layout-comp {
+        .header {
+            background: mat.get-color-from-palette($primary-palette);
+            padding: 90px $default-margin-horizontal;
+            color: white;
+            background-image: url("../../../assets/Hintergrund_viren_bakterien_blau.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            .title-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap-reverse;
+
+                .title {
+                    flex: 1;
+                    // min-width: 550px;
+
+                    font: 800 45px / 48px Roboto, "Helvetica Neue", sans-serif;
+                    letter-spacing: -0.005em;
+                    margin-bottom: 16px;
+                }
+                .licence-small {
+                    flex: 0 0 auto;
+                }
+            }
+
+            .author-container {
+                margin-bottom: 24px;
+            }
+        }
+
+        .main {
+            padding: $default-margin-bottom $default-margin-horizontal;
+            background: #fafafa;
+
+            .content-container {
+                margin-bottom: $default-margin-bottom;
+            }
+
+            .two-col-layout {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+
+                .left-column {
+                    flex: 1;
+                    // max-width: calc(100% - 450px);
+                    margin-right: $default-margin-horizontal;
+
+                    // background: orange;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+
+                    // margin-bottom: $default-margin-bottom;
+                }
+
+                .right-column {
+                    flex: 0 0 auto;
+                    max-width: 420px;
+                    height: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+
+                    // margin-bottom: $default-margin-bottom;
+                }
+            }
+
+            .abstract-tag-cite-container {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+
+                .left-column {
+                    flex: 1;
+                    // max-width: calc(100% - 450px);
+                    margin-right: $default-margin-horizontal;
+
+                    // background: orange;
+                    display: flex;
+                    flex-direction: column;
+
+                    // margin-bottom: $default-margin-bottom;
+                }
+
+                .right-column {
+                    flex: 0 0 auto;
+                    max-width: 420px;
+
+                    display: flex;
+                    flex-direction: column;
+                   
+
+                    // margin-bottom: $default-margin-bottom;
+                }
+
+                .abstract-container {
+                    margin-bottom: $default-margin-bottom;
+                }
+
+                .tag-container {
+                    margin-bottom: $default-margin-bottom;
+                }
+
+                .cite-container {
+                    margin-bottom: $default-margin-bottom;
+                }
+
+                .links-container {
+                    margin-bottom: $default-margin-bottom;
+                }
+
+                .licence-container {
+                    margin-bottom: $default-margin-bottom;
+                }
+            }
+
+            .abstract-tag-cite-container-small {
+                // margin-bottom: $default-margin-bottom;
+
+                .two-col-layout {
+                    .left-column {
+                        flex: 1;
+                        margin-right: 50px;
+                    }
+                    .right-column {
+                        flex: 0 0 40%;
+                       
+                        // min-width: 220px;
+                    }
+                }
+
+                // @media (max-width: 700px) {
+                //     .tag-cite-container {
+                //         flex-direction: column;
+                //     }
+
+                //     .left-column {
+                //         margin-right: 0;
+                //         margin-bottom: $default-margin-bottom;
+                //     }
+                // }
+            }
+        }
+
+        @media (max-width: 700px) {
+            .header {
+                padding: 45px math.div($default-margin-horizontal, 2);
+            }
+
+            .main {
+                padding: math.div($default-margin-bottom, 2) math.div($default-margin-horizontal, 2);
+
+                .abstract-tag-cite-container-small {
+                    .two-col-layout {
+                        flex-direction: column;
+
+                        .left-column {
+                            margin-right: 0;
+                            // margin-bottom: $default-margin-bottom;
+                        }
+
+                        .right-column {
+                            max-width: unset;
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    .title-container {
-        display: flex;
-        flex-direction: row;
-    }
+    .datasource-layout-comp.datasource-layout-small {
+        .header {
+            .title-container {
+                .title  {
+                    min-width: 100%;
+                }
 
-    .contributor-container {
-    }
+            }
+        }
+        .content-container {
+            margin-bottom: math.div($default-margin-bottom, 2);
+        }
+        .abstract-container {
+            margin-bottom: math.div($default-margin-bottom, 2);
+        }
 
-    .abstract-container {
-    }
+        .tag-container {
+            margin-bottom: math.div($default-margin-bottom, 2);
+        }
 
-    .tag-container {
-    }
+        .links-container {
+            margin-bottom: math.div($default-margin-bottom, 2);
+        }
 
-    .cite-container {
-    }
+        .cite-container {
+            margin-bottom: math.div($default-margin-bottom, 2);
+        }
 
-    .content-container {
-    }
-
-    .doc-container {
-    }
-}
-
-.datasource-small-layout-container {
-    display: flex;
-    flex-direction: column;
-    
-}
-
-.datasource-wide-layout-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-
-    .left-column {
-        flex: 1;
-        max-width: calc(100% - 350px);
-
-        // background: orange;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .right-column {
-        flex: 0;
-        min-width: 350px;
-        
-        // background: pink;
-        display: flex;
-        flex-direction: column;
+        .licence-container {
+            margin-bottom: math.div($default-margin-bottom, 2);
+        }
     }
 }

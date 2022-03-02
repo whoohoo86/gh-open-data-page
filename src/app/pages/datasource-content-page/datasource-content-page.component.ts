@@ -8,7 +8,7 @@ import { DatasourceService } from 'src/app/services/datasource.service';
 })
 export class DatasourceContentPageComponent implements OnInit {
 
-  readonly datasource = this.datasourceService.getDataAsDatasource();
+  readonly datasource = this.datasourceService.getDatasource();
 
   constructor(private datasourceService: DatasourceService){
   }

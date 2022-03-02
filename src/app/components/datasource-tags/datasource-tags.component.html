@@ -1,6 +1,32 @@
 <mat-chip-list class="tag-list" *ngIf="datasource">
-    <mat-chip *ngFor="let tag of datasource.tags" class="tag">
-        {{tag}}
-        <!-- <a class="tag-link" routerLink="/datensatz/suche" [queryParams]="{tag: tag}">{{tag}}</a> -->
+
+    <mat-chip color="accent" selected *ngFor="let tag of (showAll ? datasource.tags : (datasource.tags | slice:0:amount))" class="tag">
+        <a class="tag-link" [href]="'https://zenodo.org/search?q=keywords:%22' + tag + '%22'"
+            target="_blank">{{tag}}</a>
     </mat-chip>
+    <mat-chip color="accent" selected *ngIf="!showAll && datasource.tags.length > amount" (click)="showAll = true">
+        +{{datasource.tags.length - amount}} mehr...
+    </mat-chip>
+
+    <!-- <mat-menu #moreTags="matMenu">
+        <a mat-menu-item *ngFor="let tag of datasource.tags | slice:amount" class="tag-link"
+            [href]="'https://zenodo.org/search?q=keywords:%22' + tag + '%22'" target="_blank">
+            {{tag}}
+        </a>
+    </mat-menu> -->
+
+    <!-- <mat-chip color="accent" selected *ngFor="let tag of datasource.tags | slice:0:amount" class="tag">
+        <a class="tag-link" [href]="'https://zenodo.org/search?q=keywords:%22' + tag + '%22'"
+            target="_blank">{{tag}}</a>
+    </mat-chip>
+    <mat-chip color="accent" selected *ngIf="datasource.tags.length > amount" [matMenuTriggerFor]="moreTags">
+        +{{datasource.tags.length - amount}} mehr...
+    </mat-chip>
+
+    <mat-menu #moreTags="matMenu">
+        <a mat-menu-item *ngFor="let tag of datasource.tags | slice:amount" class="tag-link"
+            [href]="'https://zenodo.org/search?q=keywords:%22' + tag + '%22'" target="_blank">
+            {{tag}}
+        </a>
+    </mat-menu> -->
 </mat-chip-list>

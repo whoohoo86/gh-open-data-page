@@ -20,34 +20,60 @@
 
             .title {
                 flex: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
 
                 .lfs {
                     color: teal;
                     margin: 0 1em;
                 }
             }
+
+            @media (max-width: 500px) {
+                .source-button {
+                    display: none;
+                }
+            }
+        }
+
+        .lfs-info-container {
+            width: 85%;
+            max-height: 100%;
+
+            .title {
+                display: flex;
+                align-items: center;
+
+                .icon.sad-face {
+                    font-size: 2em;
+                    height: 48px;
+                }
+            }
+        }
+
+        .no-preview-available {
+            width: 85%;
+            max-height: 100%;
+
+            .title {
+                display: flex;
+                align-items: center;
+
+                .icon.sad-face {
+                    font-size: 2em;
+                    height: 48px;
+                }
+            }
         }
 
         .preview-container {
             flex: 1;
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100%;
-            max-height: 100%;
-            overflow: auto;
-
-            .no-preview-available {
-                height: 100%;
-                width: 100%;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-                .sad-face {
-                    font-size: 2em;
-                }
-            }
+            width: 100%;
+            overflow-y: auto;
         }
     }
 }

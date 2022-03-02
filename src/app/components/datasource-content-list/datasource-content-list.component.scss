@@ -1,3 +1,11 @@
+.tree-container {
+
+  max-width: 100%;
+
+  overflow-x: auto;
+
+}
+
 .file-item {
   display: flex;
   flex-direction: row;
@@ -36,14 +44,20 @@
   display: none;
 }
 
-.content-tree .mat-nested-tree-node div[role="group"] {
-  padding-left: 40px;
+.content-tree {
+  background-color: unset;
+  min-width: 440px;
+
+  .mat-nested-tree-node div[role="group"] {
+    padding-left: 40px;
+  }
 }
 
 .icon-wrapper {
   padding: 0;
   min-width: 0;
-  width: 40px;
+  // width: 40px;
+  margin-right: 1em;
   flex-shrink: 0;
   text-align: center;
 }

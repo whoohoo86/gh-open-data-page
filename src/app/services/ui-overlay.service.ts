@@ -29,13 +29,13 @@ export class UiOverlayService {
       const overlayRef = this.overlay.create({
         positionStrategy,
         hasBackdrop: true,
-        panelClass: 'my-dialog-panel',
+        panelClass: 'overlay-dialog-panel',
         scrollStrategy: this.overlay.scrollStrategies.block(),
         disposeOnNavigation: true,
-        minWidth: '60vw',
-        width: '60vw',
-        minHeight: '80vh',
-        height: '80vh'
+        // minWidth: '60vw',
+        // width: '60vw',
+        // minHeight: '80vh',
+        // height: '80vh'
       });
       //Then we create a portal to render a component
       const componentPortal = new ComponentPortal(DatasourceContentPreviewComponent);

@@ -1,27 +1,51 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
+
+@mixin datasource-contributor-list-component($theme) {
+    $color-config: mat.get-color-config($theme);
+    $accent-palette: map.get($color-config, "accent");
+
+    .contrib-container {
+        .contrib {
+            .contrib-role {
+                background: mat.get-color-from-palette($accent-palette);
+                color: mat.get-color-from-palette($accent-palette, "default-contrast");
+            }
+        }
+    }
+}
+
 .name-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1.25em;
+    gap: 0.25em 1.25em;
+}
+
+.contrib-title {
+    font: 800 16px / 28px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
 }
 
 .contrib-container {
+    
     .contrib {
-
         position: relative;
-        padding-bottom: 1.25em;
-        // color: red;
-
-        .contrib-role{
+        
+        .contrib-role {
             position: absolute;
             top: 1.25em;
-            left: 0;
-            color: orange;
+
+            
+            padding: 8px 12px;
+            
+            z-index: 10;
         }
     }
 }
 
 .author-container {
     .author {
+        font: 800 16px / 28px Roboto, "Helvetica Neue", sans-serif;
     }
 }
