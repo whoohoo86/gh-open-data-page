@@ -1,6 +1,6 @@
 <div class="datasource-link-component link-container" *ngIf="datasource">
     <div class="link-wrapper" *ngFor="let link of datasource.externalLinks">
         <a class="link external-link" [ngClass]="link.$type + '-link'"
-            [href]="link.url" target="_blank"></a>
+            [href]="link.url" target="_blank" [ngStyle]="background-img: url('')"></a>
     </div>
 </div>
