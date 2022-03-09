@@ -1,13 +1,11 @@
 <div class="home-page">
 
-    <div class="rki-logo-container"><div class="rki-logo"></div></div>
+    <div class="rki-logo-container"><a class="rki-logo" href="https:www.rki.de" target="_blank"></a></div>
 
     <app-datasource-layout>
         <app-datasource-layout-item position="title">
             <div>{{datasource.name}}</div>
         </app-datasource-layout-item>
-
-   
 
         <app-datasource-layout-item position="authors">
             <app-datasource-contributor-list [authors]="datasource.authors">
