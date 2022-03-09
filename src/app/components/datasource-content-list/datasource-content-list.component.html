@@ -8,7 +8,6 @@
             <div class="file-item">
                 <span class="file-name" (click)="showPreview(file)" [title]="file.name">{{file.name}}</span>
                 <span *ngIf="file.lfs" class="lfs-mark">LFS</span>
-                <!-- <div class="horizontal-spacer"></div> -->
                 <a mat-button (click)="startDownload(file)" download>
                     <mat-icon>file_download</mat-icon>
                     Download
@@ -21,11 +20,6 @@
                 <div class="icon-wrapper">
                     <mat-icon> {{treeControl.isExpanded(node) ? 'folder_open' : 'folder'}} </mat-icon>
                 </div>
-                <!-- <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
-                <mat-icon class="mat-icon-rtl-mirror">
-                    {{treeControl.isExpanded(node) ? 'folder_open' : 'folder'}}
-                </mat-icon>
-            </button> -->
 
                 <span class="folder-name" (click)="treeControl.toggle(node)" [title]="node.name">{{node.name}}</span>
             </div>
