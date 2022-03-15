@@ -1,0 +1,10 @@
+.toc-item {
+    .toc-item-link {
+        color: inherit;
+        text-decoration: inherit;
+
+        &.active {
+            font-weight: bold;
+        }
+    }
+}

@@ -18,8 +18,9 @@
         </div>
     </div>
     <div class="main">
-
+        
         <div *ngIf="isSmallWidth$ | async; else wideATC" class="abstract-tag-cite-container-small">
+            
             <div class="abstract-container">
                 <ng-template [cdkPortalOutlet]="portalsByPosition['abstract'] | async"></ng-template>
             </div>

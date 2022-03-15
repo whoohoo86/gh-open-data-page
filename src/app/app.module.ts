@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatTreeModule } from '@angular/material/tree';
 import { LayoutModule } from '@angular/cdk/layout';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { FullscreenOverlayContainer, OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -55,6 +56,8 @@ import { EmbedPageComponent } from './pages/embed-page/embed-page.component';
 import { DatasourceCardComponent } from './components/datasource-card/datasource-card.component';
 import { DatasourceLinksComponent } from './components/datasource-links/datasource-links.component';
 import { BaseHrefPipe } from './pipes/base-href.pipe';
+import { TableOfContentComponent } from './components/table-of-content/table-of-content.component';
+import { MatListModule } from '@angular/material/list';
 
 registerLocaleData(localeDe, 'de');
 
@@ -110,7 +113,8 @@ function getBaseHref(platformLocation: PlatformLocation): string {
     EmbedPageComponent,
     DatasourceCardComponent,
     DatasourceLinksComponent,
-    BaseHrefPipe
+    BaseHrefPipe,
+    TableOfContentComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -127,6 +131,7 @@ function getBaseHref(platformLocation: PlatformLocation): string {
     }),
     MatProgressSpinnerModule,
     PdfViewerModule,
+    MatListModule,
     MatIconModule,
     MatTreeModule,
     MatButtonModule,
@@ -145,6 +150,7 @@ function getBaseHref(platformLocation: PlatformLocation): string {
     TableVirtualScrollModule,
     MatToolbarModule,
     PortalModule,
+    NgxPageScrollCoreModule,
     AppRoutingModule
   ],
   providers: [
