@@ -1,6 +1,7 @@
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { ChangeDetectorRef, ComponentRef, Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectorRef, ComponentRef, Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { combineLatest, Observable, of, race, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { DatasourceContentPreviewComponent } from '../components/datasource-content-preview/datasource-content-preview.component';
@@ -10,10 +11,11 @@ import { DatasourceContent, OpenDataDatasource } from '../models/datasource';
   providedIn: 'root'
 })
 export class UiOverlayService {
+  private renderer: Renderer2;
 
-
-
-  constructor(private overlay: Overlay) { }
+  constructor(private overlay: Overlay, @Inject(DOCUMENT) private document: Document, private rendererFactory: RendererFactory2) {
+    this.renderer = this.rendererFactory.createRenderer(null, null);
+   }
 
   private previeWRef?: ComponentRef<DatasourceContentPreviewComponent>;
 
@@ -45,14 +47,17 @@ export class UiOverlayService {
 
       //We render the portal in the overlay
       this.previeWRef = overlayRef.attach(componentPortal);
+      this.renderer.addClass(this.document.body, 'noScroll');
 
       const subscription = race([overlayRef.backdropClick(), this.previeWRef.instance.close.asObservable()]).subscribe(() => {
         overlayRef.dispose();
         this.previeWRef = undefined;
+        this.renderer.removeClass(this.document.body, 'noScroll');
         setTimeout(() => subscription.unsubscribe());
       });
     }
     // this.componentRef.injector.get(ChangeDetectorRef).detectChanges();
+    
     this.previeWRef.instance.content = content;
     this.previeWRef.instance.datasource = datasource;
     this.previeWRef.instance.update();

@@ -1,12 +1,13 @@
 <div class="datasource-licence" *ngIf="datasource">
     <mat-chip-list *ngIf="mode === 'small'; else largeLicence">
-        <mat-chip color="primary" selected>
+        <mat-chip color="primary" selected class="licence-chip">
             <a class="licence-link" [href]="licenceUrl" target="_blank">{{datasource.licence}}</a>
         </mat-chip>
     </mat-chip-list>
 </div>
 
 <ng-template #largeLicence>
+    <h2 class="mat-title" id="licence">Lizenz</h2>
     <div class="licence-large">
         <a *ngIf="datasource && datasource.licence === 'CC-BY-4.0'" [href]="licenceUrl" target="_blank">
             <img class="licence-logo" [src]="'/assets/cc-by-4-0-icon.png' | baseHref" />

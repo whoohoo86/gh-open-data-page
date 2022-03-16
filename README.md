@@ -4,14 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## TODO
 
-- ~~kleine displays weniger rand~~
-- ~~cc by button farben drehen~~
-- ~~header rki logo weg?!~~
-- ~~lfs dateien ohne vorschau~~
-- ~~schrift aus github übernehmen + Lineheight und co~~
-- ~~box für links~~
-- ~~datenstand wo jetzt links~~
-- ~~tags abschneiden (+X mehr) bei mehr als 10 tags oder mehr als 500 zeichen~~
+- Schrift vorallem Überschriften in Readme (Dokumentation) anders, weil Github-Style
 
 ## Fragen
 

@@ -1,4 +1,12 @@
 <div class="cite-comp-container">
-    <div class="tooltip-fake" #tooltip="matTooltip" matTooltip="Zitierangaben in Zwischenablage kopiert"></div>
-    <p class="cite-string" [cdkCopyToClipboard]="citeString" (cdkCopyToClipboardCopied)="showTooltip(tooltip)">{{ citeString }}</p>
+    <div class="title-row">
+        <h2 class="mat-title" id="cite">Zitieren </h2>
+        <button mat-icon-button class="copy-button" #btnTooltip="matTooltip" [matTooltip]="tooltipMessage"
+            matTooltipDisabled [cdkCopyToClipboard]="citeString" (cdkCopyToClipboardCopied)="showTooltip(btnTooltip)">
+            <mat-icon>content_copy</mat-icon>
+        </button>
+    </div>
+
+    <p class="cite-string" #stringTooltip="matTooltip" [matTooltip]="tooltipMessage" matTooltipDisabled
+        [cdkCopyToClipboard]="citeString" (cdkCopyToClipboardCopied)="showTooltip(stringTooltip)">{{ citeString }}</p>
 </div>

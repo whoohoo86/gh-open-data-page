@@ -14,9 +14,10 @@ export class DatasourceCiteComponent implements OnInit, OnChanges {
   @Input() datasource?: OpenDataDatasource;
   private datePipe = new DatePipe('de');
   citeString: string = '';
+  readonly tooltipMessage = 'Zitierangaben in Zwischenablage kopiert';
 
   constructor() { }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.datasource) {
       this.citeString = this.createCiteString();
@@ -27,8 +28,12 @@ export class DatasourceCiteComponent implements OnInit, OnChanges {
   }
 
   showTooltip(tooltip: MatTooltip) {
+    tooltip.disabled = false;
     tooltip.show();
-    setTimeout(() => tooltip.hide(), 2000);
+    setTimeout(() => {
+      tooltip.hide();
+      tooltip.disabled = true;
+    }, 2000);
   }
 
   private createCiteString() {

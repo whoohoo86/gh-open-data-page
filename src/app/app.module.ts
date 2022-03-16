@@ -58,6 +58,10 @@ import { DatasourceLinksComponent } from './components/datasource-links/datasour
 import { BaseHrefPipe } from './pipes/base-href.pipe';
 import { TableOfContentComponent } from './components/table-of-content/table-of-content.component';
 import { MatListModule } from '@angular/material/list';
+import { KeepInViewComponent } from './components/keep-in-view/keep-in-view.component';
+import { ExtentionToIconnamePipe } from './pipes/extention-to-iconname';
+import { DatasourceContentExtPipe } from './pipes/datasource-content-ext.pipe';
+import { FilenameBeautifyPipe } from './pipes/filename-beautify.pipe';
 
 registerLocaleData(localeDe, 'de');
 
@@ -114,7 +118,11 @@ function getBaseHref(platformLocation: PlatformLocation): string {
     DatasourceCardComponent,
     DatasourceLinksComponent,
     BaseHrefPipe,
-    TableOfContentComponent
+    TableOfContentComponent,
+    KeepInViewComponent,
+    ExtentionToIconnamePipe,
+    DatasourceContentExtPipe,
+    FilenameBeautifyPipe
   ],
   imports: [
     BrowserAnimationsModule,

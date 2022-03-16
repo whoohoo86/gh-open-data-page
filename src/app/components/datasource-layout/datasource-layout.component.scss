@@ -4,46 +4,63 @@
 
 $default-margin-bottom: 20px;
 $default-margin-horizontal: 70px;
+$max-width: 1300px;
 
 @mixin datasource-layout-component($theme) {
     $color-config: mat.get-color-config($theme);
     $primary-palette: map.get($color-config, "primary");
 
     .datasource-layout-comp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         .header {
             background: mat.get-color-from-palette($primary-palette);
-            padding: 90px $default-margin-horizontal;
-            color: white;
-            background-image: url("../../../assets/header_background.png");
-            background-size: cover;
-            background-repeat: no-repeat;
+            width: 100%;
+            display: flex;
+            justify-content: center;
 
-            .title-container {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap-reverse;
+            .header-image-background {
+                background: mat.get-color-from-palette($primary-palette);
+                padding: 90px $default-margin-horizontal;
+                color: white;
+                background-image: url("../../../assets/header_background.png");
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+                max-width: $max-width;
+                box-sizing: border-box;
 
-                .title {
-                    flex: 1;
-                    // min-width: 550px;
+                .title-container {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap-reverse;
 
-                    font: 800 45px / 48px Roboto, "Helvetica Neue", sans-serif;
-                    letter-spacing: -0.005em;
-                    margin-bottom: 16px;
+                    .title {
+                        flex: 1;
+                        // min-width: 550px;
+
+                        font: 800 45px / 48px Roboto, "Helvetica Neue", sans-serif;
+                        letter-spacing: -0.005em;
+                        margin-bottom: 16px;
+                    }
+                    .licence-small {
+                        flex: 0 0 auto;
+                    }
                 }
-                .licence-small {
-                    flex: 0 0 auto;
-                }
-            }
 
-            .author-container {
-                margin-bottom: 24px;
+                .author-container {
+                    margin-bottom: 24px;
+                }
             }
         }
 
         .main {
             padding: $default-margin-bottom $default-margin-horizontal;
-            background: #fafafa;
+
+            max-width: $max-width;
+            box-sizing: border-box;
 
             .content-container {
                 margin-bottom: $default-margin-bottom;
@@ -85,7 +102,7 @@ $default-margin-horizontal: 70px;
                 align-items: stretch;
 
                 .left-column {
-                    flex: 1;
+                    flex: 3;
                     // max-width: calc(100% - 450px);
                     margin-right: $default-margin-horizontal;
 
@@ -97,33 +114,20 @@ $default-margin-horizontal: 70px;
                 }
 
                 .right-column {
-                    flex: 0 0 auto;
-                    max-width: 420px;
+                    flex: 1;
+                    // max-width: 420px;
 
                     display: flex;
                     flex-direction: column;
-                   
+
+                    mat-divider {
+                        margin-bottom: $default-margin-bottom;
+                    }
 
                     // margin-bottom: $default-margin-bottom;
                 }
 
-                .abstract-container {
-                    margin-bottom: $default-margin-bottom;
-                }
-
-                .tag-container {
-                    margin-bottom: $default-margin-bottom;
-                }
-
-                .cite-container {
-                    margin-bottom: $default-margin-bottom;
-                }
-
-                .links-container {
-                    margin-bottom: $default-margin-bottom;
-                }
-
-                .licence-container {
+                .section-container {
                     margin-bottom: $default-margin-bottom;
                 }
             }
@@ -138,7 +142,7 @@ $default-margin-horizontal: 70px;
                     }
                     .right-column {
                         flex: 0 0 40%;
-                       
+
                         // min-width: 220px;
                     }
                 }
@@ -185,32 +189,12 @@ $default-margin-horizontal: 70px;
     .datasource-layout-comp.datasource-layout-small {
         .header {
             .title-container {
-                .title  {
+                .title {
                     min-width: 100%;
                 }
-
             }
         }
-        .content-container {
-            margin-bottom: math.div($default-margin-bottom, 2);
-        }
-        .abstract-container {
-            margin-bottom: math.div($default-margin-bottom, 2);
-        }
-
-        .tag-container {
-            margin-bottom: math.div($default-margin-bottom, 2);
-        }
-
-        .links-container {
-            margin-bottom: math.div($default-margin-bottom, 2);
-        }
-
-        .cite-container {
-            margin-bottom: math.div($default-margin-bottom, 2);
-        }
-
-        .licence-container {
+        .section-container {
             margin-bottom: math.div($default-margin-bottom, 2);
         }
     }

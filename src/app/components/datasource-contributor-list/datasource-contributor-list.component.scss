@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:color';
 @use '~@angular/material' as mat;
 
 @mixin datasource-contributor-list-component($theme) {
@@ -8,7 +9,7 @@
     .contrib-container {
         .contrib {
             .contrib-role {
-                background: mat.get-color-from-palette($accent-palette);
+                background: color.scale(mat.get-color-from-palette($accent-palette), $alpha: -20%);
                 color: mat.get-color-from-palette($accent-palette, "default-contrast");
             }
         }

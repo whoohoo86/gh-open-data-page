@@ -12,6 +12,11 @@
             </app-datasource-contributor-list>
         </app-datasource-layout-item>
 
+        <app-datasource-layout-item position="toc">
+            <app-table-of-content [datasource]="datasource">
+            </app-table-of-content>
+        </app-datasource-layout-item>
+
         <app-datasource-layout-item position="contributors">
             <app-datasource-contributor-list [contributors]="datasource.contributors">
             </app-datasource-contributor-list>
@@ -22,7 +27,6 @@
         </app-datasource-layout-item>
 
         <app-datasource-layout-item position="licence">
-            <h2 class="mat-title" id="licence">Lizenz</h2>
             <app-datasource-licence [datasource]="datasource" mode="large"></app-datasource-licence>
         </app-datasource-layout-item>
 
@@ -32,29 +36,29 @@
         </app-datasource-layout-item>
 
         <app-datasource-layout-item position="tag">
-            <h2 class="mat-title" id="tags">Schlagwörter</h2>
             <app-datasource-tags [datasource]="datasource"></app-datasource-tags>
         </app-datasource-layout-item>
 
         <app-datasource-layout-item position="cite">
-            <h2 class="mat-title" id="cite">Zitieren</h2>
             <app-datasource-cite [datasource]="datasource"></app-datasource-cite>
         </app-datasource-layout-item>
 
         <app-datasource-layout-item position="links">
-            <h2 class="mat-title" id="links">Datenquellen</h2>
+
             <app-datasource-links [datasource]="datasource"></app-datasource-links>
 
             <!-- <app-table-of-content [datasource]="datasource"></app-table-of-content> -->
         </app-datasource-layout-item>
 
         <app-datasource-layout-item position="content">
-            <div class="title-date-container">
-                <h2 class="title mat-title" id="content">Dateien / Inhalt</h2>
-                <div class="date">Datenstand: {{datasource.lastUpdated | date}}</div>
-            </div>
-            
-            <app-datasource-content-list [datasource]="datasource"></app-datasource-content-list>
+            <mat-card>
+                <div class="title-date-container">
+                    <h2 class="title mat-title" id="content">Dateien / Inhalt</h2>
+                    <div class="date">Datenstand: {{datasource.lastUpdated | date}}</div>
+                </div>
+
+                <app-datasource-content-list [datasource]="datasource"></app-datasource-content-list>
+            </mat-card>
         </app-datasource-layout-item>
 
         <app-datasource-layout-item position="doc">

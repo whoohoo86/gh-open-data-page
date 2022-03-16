@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnChanges, OnInit, QueryList, Renderer2, SimpleChanges, ViewChildren } from '@angular/core';
-import { MatListItem } from '@angular/material/list';
+import { AfterViewInit, Component, ElementRef, HostListener, Inject, Input, OnChanges, OnInit, QueryList, Renderer2, SimpleChanges, ViewChildren } from '@angular/core';
+import { MatList, MatListItem } from '@angular/material/list';
 import { PageScrollService } from 'ngx-page-scroll-core';
 import { OpenDataDatasource } from 'src/app/models/datasource';
 import * as _ from 'lodash';
 import { MarkdownService } from 'ngx-markdown';
 import { ComplexInnerSubscriber } from 'rxjs/internal/innerSubscribe';
+import { DOCUMENT } from '@angular/common';
 
 interface TocItem {
   fragment: string;
@@ -21,25 +22,21 @@ export class TableOfContentComponent implements OnInit, OnChanges, AfterViewInit
 
   private readonly defaultTocItems = [
     { label: 'Zusammenfassung', fragment: 'abstract' },
-    { label: 'Schlagwörter', fragment: 'tags' },
-    { label: 'Zitieren', fragment: 'cite' },
-    { label: 'Lizenz', fragment: 'licence' },
-    { label: 'Datenquellen', fragment: 'links' },
     { label: 'Dateien / Inhalt', fragment: 'content' }
   ];
   tocItems: TocItem[] = [];
 
   @Input() scrollContainerSelector?: string;
   @Input() datasource?: OpenDataDatasource;
-  @ViewChildren('tocItem') tocLinkElements?: QueryList<ElementRef<HTMLAnchorElement>>;
+  @ViewChildren('tocItem') tocElements?: QueryList<ElementRef<HTMLAnchorElement>>;
   private activeElement?: HTMLElement;
 
-  constructor(private renderer: Renderer2, private markdownService: MarkdownService) {
+  constructor(private renderer: Renderer2, private markdownService: MarkdownService, @Inject(DOCUMENT) private document: any) {
   }
   ngAfterViewInit(): void {
-    if (this.tocLinkElements && this.tocLinkElements.length > 0) {
-      console.log("initial activation");
-      this.activateElement(this.tocLinkElements.first.nativeElement);
+    if (this.tocElements && this.tocElements.length > 0) {
+      // console.log("initial activation");
+      this.activateElement(this.tocElements.first.nativeElement);
     }
   }
 
@@ -69,27 +66,57 @@ export class TableOfContentComponent implements OnInit, OnChanges, AfterViewInit
     return result;
   }
 
+  private lastScrollTop = 0;
+
   @HostListener('window:scroll', ['$event.target'])
   onWindowScrolled(eventTarget: any) {
     const scrollContainer = eventTarget.scrollingElement;
     this.cleanup();
 
-    if (this.tocLinkElements) {
-      for (let tocLinkElem of this.tocLinkElements) {
-        const targetId = _.last(tocLinkElem.nativeElement.href.split('#'));
-        const targetElem = scrollContainer.querySelector(`#${targetId}`);
-        const targetElemBB = targetElem.getBoundingClientRect();
-        const targetTop = targetElemBB.top;
+    let toActivate = this.tocElements?.first.nativeElement;
 
-        if (targetTop > 0) {
-          this.activateElement(tocLinkElem.nativeElement);
-          break;
+    if (this.tocElements) {
+      const last = this.tocElements.last;
+      for (const tocLinkElem of _.reverse(this.tocElements.toArray())) {
+
+        const targetId = _.last(tocLinkElem.nativeElement.href.split('#'));
+        if (targetId) {
+          const targetElem = scrollContainer.querySelector(`#${decodeURIComponent(targetId)}`);
+
+          console.log("item", targetElem.getBoundingClientRect());
+
+          if (last === tocLinkElem && this.isInViewport(targetElem)) {
+            toActivate = last.nativeElement;
+            break;
+          }
+
+          if (Math.floor(targetElem.getBoundingClientRect().top) <= 0) {
+            console.log("WINNER", targetElem);
+            toActivate = tocLinkElem.nativeElement;
+            break;
+          }
         }
       }
     }
+
+    if (toActivate) {
+      this.activateElement(toActivate);
+    }
   }
 
+  private isInViewport(ele: any) {
+    const rect = ele.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (this.document.documentElement.clientHeight) &&
+      rect.right <= (this.document.documentElement.clientWidth)
+    );
+  };
+
+
   private activateElement(element: HTMLElement) {
+
     this.activeElement = element;
     this.renderer.addClass(element, 'active');
   }

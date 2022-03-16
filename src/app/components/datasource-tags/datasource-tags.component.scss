@@ -1,7 +1,13 @@
+@use '@angular/material' as mat;
+
 .tag-list {
     // .tag {
     //     background: #ecf0f7;
     // }
+
+    .tag-chip {
+        @include mat.elevation(1);
+    }
 
     .tag-link {
         text-decoration: inherit;

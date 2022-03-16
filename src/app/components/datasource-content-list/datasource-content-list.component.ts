@@ -37,18 +37,7 @@ export class DatasourceContentListComponent implements OnInit, OnChanges {
 
   hasChild = (_: number, node: DatasourceContent) => node.$type === 'folder' && node.content.length > 0;
 
-  getIconName(file: FileDatasourceContent): string {
-    const ext = _.last(file.path.toLowerCase().split('.'));
-
-    switch (ext) {
-      case 'csv': return 'leaderboard';
-      case 'md': return 'text_snippet';
-      case 'pdf': return 'text_snippet';
-      case 'xz': return 'compress';
-    }
-
-    return 'note';
-  }
+  
 
   ngOnInit(): void {
   }

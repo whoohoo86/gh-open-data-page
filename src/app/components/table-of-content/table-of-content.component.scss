@@ -1,10 +1,33 @@
-.toc-item {
-    .toc-item-link {
-        color: inherit;
-        text-decoration: inherit;
+.toc {
+    
+    padding-top: 0;
 
-        &.active {
-            font-weight: bold;
+    .toc-item {
+        height: unset;
+        margin-bottom: 8px;
+        
+        .toc-item-icon {
+            margin-left: -0.25em;
+        }
+
+
+
+        .toc-item-link {
+            color: inherit;
+            text-decoration: inherit;
+
+            &.active {
+                font-weight: bold;
+            }
         }
     }
+
+    .toc-item:first-child {
+        margin-top: -0.75em;
+    }
 }
+
+::ng-deep mat-list mat-list-item.toc-item .mat-list-item-content {
+    padding: 0 !important;
+}
+

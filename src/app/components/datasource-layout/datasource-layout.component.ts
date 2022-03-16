@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay, map, shareReplay, startWith } from 'rxjs/operators';
 import { DatasourceLayoutItemComponent } from '../datasource-layout-item/datasource-layout-item.component';
 
-export type DatasourceLayoutItemPosition = 'licence-small' | 'licence' | 'links' | 'title' | 'authors' | 'contributors' | 'abstract' | 'tag' | 'cite' | 'content' | 'doc';
+export type DatasourceLayoutItemPosition = 'toc' | 'licence-small' | 'licence' | 'links' | 'title' | 'authors' | 'contributors' | 'abstract' | 'tag' | 'cite' | 'content' | 'doc';
 
 @Component({
   selector: 'app-datasource-layout',
@@ -30,7 +30,8 @@ export class DatasourceLayoutComponent implements OnInit, AfterViewInit, OnDestr
     'cite': new BehaviorSubject<TemplatePortal | null>(null),
     'content': new BehaviorSubject<TemplatePortal | null>(null),
     'doc': new BehaviorSubject<TemplatePortal | null>(null),
-    'links': new BehaviorSubject<TemplatePortal | null>(null)
+    'links': new BehaviorSubject<TemplatePortal | null>(null),
+    'toc': new BehaviorSubject<TemplatePortal | null>(null),
   };
 
   @ContentChildren(DatasourceLayoutItemComponent, { descendants: true }) items!: QueryList<DatasourceLayoutItemComponent>;

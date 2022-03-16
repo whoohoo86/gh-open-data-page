@@ -1,0 +1,9 @@
+.keep-in-view-container {
+    position: relative;
+
+    .keep-in-view {
+        position: absolute;
+        // transition: top 150ms ease-out;
+        top: 0;
+    }
+}

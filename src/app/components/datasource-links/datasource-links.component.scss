@@ -30,12 +30,20 @@
         .link,
         .external-link {
             height: 48px;
+            width: 117px;
+        }
+
+        .link-logo {
+            height: 100%;
+            height: 100%;
+
             background-size: contain;
             background-repeat: no-repeat;
+            background-position: center;
         }
 
         .github-link {
-            width: 117px;
+            // width: 117px;
             // @if $is-dark {
             //     background-image: url("/assets/github-mark-light-64px.png");
             // } @else {
@@ -44,7 +52,7 @@
         }
 
         .zenodo-link {
-            width: 117px;
+            
 
             // @if $is-dark {
             //     background-image: url("/assets/zenodo_logo_white.svg");
