@@ -2,8 +2,8 @@
 @use "sass:math";
 @use '~@angular/material' as mat;
 
-$default-margin-bottom: 20px;
-$default-margin-horizontal: 70px;
+$default-margin-bottom: 24px;
+$default-margin-horizontal: 72px;
 $max-width: 1300px;
 
 @mixin datasource-layout-component($theme) {
@@ -101,24 +101,24 @@ $max-width: 1300px;
             .abstract-tag-cite-container {
                 display: flex;
                 flex-direction: row;
-                align-items: stretch;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: $default-margin-horizontal;
+
+                // gap: $default-margin-horizontal;
 
                 .left-column {
-                    flex: 1;
-                    max-width: 75%;
+                    flex: 3;
+                    max-width: calc(75% - #{$default-margin-horizontal * 0.75});
                     
-                    margin-right: $default-margin-horizontal;
-
-                    // background: orange;
                     display: flex;
                     flex-direction: column;
-
-                    // margin-bottom: $default-margin-bottom;
                 }
+
 
                 .right-column {
                     flex: 1;
-                    max-width: 25%;
+                    max-width: calc(25% - #{$default-margin-horizontal * 0.25});
 
                     display: flex;
                     flex-direction: column;
@@ -127,7 +127,6 @@ $max-width: 1300px;
                         margin-bottom: $default-margin-bottom;
                     }
 
-                    // margin-bottom: $default-margin-bottom;
                 }
 
                 .section-container {

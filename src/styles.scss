@@ -34,25 +34,25 @@ $git-typography: mat.define-typography-config(
 /* For use in src/lib/core/theming/_palette.scss */
 /* For use in src/lib/core/theming/_palette.scss */
 $md-royalblue: (
-  50: #e0e8f3,
-  100: #b3c5e0,
-  200: #809fcb,
-  300: #4d79b6,
-  400: #265ca7,
-  500: #003f97,
-  600: #00398f,
-  700: #003184,
-  800: #00297a,
-  900: #001b69,
-  A100: #98a9ff,
-  A200: #657fff,
-  A400: #3255ff,
-  A700: #193fff,
+  50: #e0ecf7,
+  100: #b3ceea,
+  200: #80aedc,
+  300: #4d8ece,
+  400: #2675c4,
+  500: #005db9,
+  600: #0055b2,
+  700: #004baa,
+  800: #0041a2,
+  900: #003093,
+  A100: #beceff,
+  A200: #8ba8ff,
+  A400: #5881ff,
+  A700: #3f6eff,
   contrast: (
     50: #000000,
     100: #000000,
     200: #000000,
-    300: #ffffff,
+    300: #000000,
     400: #ffffff,
     500: #ffffff,
     600: #ffffff,
@@ -61,7 +61,7 @@ $md-royalblue: (
     900: #ffffff,
     A100: #000000,
     A200: #000000,
-    A400: #ffffff,
+    A400: #000000,
     A700: #ffffff,
   ),
 );
@@ -189,7 +189,12 @@ $rki-theme: mat.define-light-theme(
 @function git-foreground() {
   @return (base: $git-foreground, divider: $git-foreground, dividers: $git-foreground);
 }
-$theme: map-merge($rki-theme, (foreground: git-foreground()));
+$theme: map-merge(
+  $rki-theme,
+  (
+    foreground: git-foreground(),
+  )
+);
 
 // @debug $theme;
 
@@ -217,7 +222,6 @@ body {
   padding: 0;
   margin: 0;
   // background: red;
-  
 }
 
 html.cdk-global-scrollblock {
@@ -240,11 +244,11 @@ body {
   }
 }
 
-.content-wrapper {
-  // max-height: 100%;
-  // max-width: 100%;
-  // overflow: auto;
-}
+// .content-wrapper {
+//   // max-height: 100%;
+//   // max-width: 100%;
+//   // overflow: auto;
+// }
 
 // body { overflow-y: scroll; }
 
@@ -269,7 +273,6 @@ body {
     max-height: 87vh;
   }
 }
-
 
 // * {
 //   box-sizing: border-box;
