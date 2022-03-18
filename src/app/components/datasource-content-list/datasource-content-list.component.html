@@ -7,13 +7,12 @@
                         <mat-icon> {{file | datasourceContentExt | extToIconname}} </mat-icon>
                     </div>
 
-                    <div class="file-item" (click)="showPreview(file)">
-                        <span class="file-name file-item-element" [title]="file.name">{{file.name | filenameBeautify}}</span>
-                        <span *ngIf="file.lfs" class="file-lfs-mark file-item-element">LFS</span>
-                        <div class="file-extention file-item-element">
-                            {{file | datasourceContentExt | uppercase }}
-                        </div>
+                    <span class="file-name file-item-element" [title]="file.name" (click)="showPreview(file)">{{file.name | filenameBeautify}}</span>
+                    <span *ngIf="file.lfs" class="file-lfs-mark file-item-element" (click)="showPreview(file)">LFS</span>
+                    <div class="file-extention file-item-element" (click)="showPreview(file)">
+                        {{file | datasourceContentExt | uppercase }}
                     </div>
+
 
                     <a mat-raised-button color="primary" class="file-download" (click)="startDownload(file)" download>
                         <mat-icon>file_download</mat-icon>
