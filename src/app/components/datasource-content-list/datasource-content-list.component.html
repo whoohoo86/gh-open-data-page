@@ -1,26 +1,24 @@
 <div class="tree-container">
     <mat-tree [dataSource]="treeDatasource" [treeControl]="treeControl" class="content-tree" [trackBy]="trackBy">
         <mat-tree-node *matTreeNodeDef="let file" matTreeNodeToggle>
-            <div class="tree-item tree-item-leaf">
+            <div class="tree-item file-tree-item">
                 <div class="tree-item-content">
-                    <div class="icon-wrapper">
+                    <div class="icon-wrapper" (click)="showPreview(file)">
                         <mat-icon> {{file | datasourceContentExt | extToIconname}} </mat-icon>
                     </div>
 
-                    <div class="file-item">
-                        <span class="file-name file-item-element" (click)="showPreview(file)" [title]="file.name">{{file.name | filenameBeautify}}</span>
+                    <div class="file-item" (click)="showPreview(file)">
+                        <span class="file-name file-item-element" [title]="file.name">{{file.name | filenameBeautify}}</span>
                         <span *ngIf="file.lfs" class="file-lfs-mark file-item-element">LFS</span>
                         <div class="file-extention file-item-element">
                             {{file | datasourceContentExt | uppercase }}
                         </div>
-                        <a mat-raised-button color="primary" (click)="startDownload(file)" download>
-                            <mat-icon>file_download</mat-icon>
-                            Download
-                        </a>
                     </div>
 
-
-
+                    <a mat-raised-button color="primary" class="file-download" (click)="startDownload(file)" download>
+                        <mat-icon>file_download</mat-icon>
+                        Download
+                    </a>
                 </div>
                 <div class="tree-item-divider">
                     <mat-divider></mat-divider>
@@ -29,13 +27,13 @@
         </mat-tree-node>
 
         <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-            <div class="tree-item tree-item-container">
-                <div class="tree-item-content">
+            <div class="tree-item folder-tree-item">
+                <div class="tree-item-content" (click)="treeControl.toggle(node)">
                     <div class="icon-wrapper">
                         <mat-icon> {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}} </mat-icon>
                     </div>
 
-                    <span class="folder-name" (click)="treeControl.toggle(node)"
+                    <span class="folder-name" 
                         [title]="node.name">{{node.name}}</span>
                 </div>
 
