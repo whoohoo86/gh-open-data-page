@@ -7,10 +7,10 @@
 </div>
 
 <ng-template #largeLicence>
-    <h2 class="mat-title" id="licence">Lizenz</h2>
+    <div class="mat-subheading-2" id="licence">Lizenz</div>
     <div class="licence-large">
         <a *ngIf="datasource && datasource.licence === 'CC-BY-4.0'" [href]="licenceUrl" target="_blank">
-            <img class="licence-logo" [src]="'/assets/cc-by-4-0-icon.png' | baseHref" />
+            <!-- <img class="licence-logo" [src]="'/assets/cc-by-4-0-icon.png' | baseHref" /> -->
             <div class="licence-name">Creative Commons Namensnennung 4.0 International</div>
         </a>
     </div>

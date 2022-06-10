@@ -13,8 +13,15 @@
 @import "app/components/datasource-layout/datasource-layout.component.scss";
 @import "app/components/datasource-links/datasource-links.component.scss";
 @import "app/components/datasource-licence/datasource-licence.component.scss";
+@import "app/components/datasource-tags/datasource-tags.component.scss";
+@import "app/components/table-of-content/table-of-content.component.scss";
 @import "app/pages/home-page/home-page.component.scss";
 @import "fonts.scss";
+@import "palettes.scss";
+
+$subheading-2-fontsize: 16px;
+$subheading-2-lineheight: 24px;
+$subheading-2-fontweight: 500;
 
 // $font-size: 16px,
 // $line-height: 1.5,
@@ -23,6 +30,9 @@ $git-foreground: #24292f;
 $git-font-family: '-apple-system,  BlinkMacSystemFont,  "Segoe UI",  Helvetica,  Arial,  sans-serif,  "Apple Color Emoji",  "Segoe UI Emoji"';
 $git-typography: mat.define-typography-config(
   $font-family: $git-font-family,
+  $headline: mat.define-typography-level(32px, 48px, 700),
+  $title: mat.define-typography-level(24px, 32px, 600),
+  $subheading-2: mat.define-typography-level($subheading-2-fontsize, $subheading-2-lineheight, $subheading-2-fontweight),
   $body-1: mat.define-typography-level(16px, 1.5, 400),
 );
 
@@ -31,147 +41,15 @@ $git-typography: mat.define-typography-config(
 // Be sure that you only ever include this mixin once!
 @include mat.core($git-typography);
 
-/* For use in src/lib/core/theming/_palette.scss */
-/* For use in src/lib/core/theming/_palette.scss */
-$md-royalblue: (
-  50: #e0ecf7,
-  100: #b3ceea,
-  200: #80aedc,
-  300: #4d8ece,
-  400: #2675c4,
-  500: #005db9,
-  600: #0055b2,
-  700: #004baa,
-  800: #0041a2,
-  900: #003093,
-  A100: #beceff,
-  A200: #8ba8ff,
-  A400: #5881ff,
-  A700: #3f6eff,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #ffffff,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #ffffff,
-  ),
-);
+.mat-subheading-2 {
+  margin-bottom: 8px;
+}
 
-$md-marine: (
-  50: #e1e5ea,
-  100: #b3bfc9,
-  200: #8194a6,
-  300: #4f6982,
-  400: #294867,
-  500: #03284c,
-  600: #032445,
-  700: #021e3c,
-  800: #021833,
-  900: #010f24,
-  A100: #5f8bff,
-  A200: #2c66ff,
-  A400: #0044f8,
-  A700: #003ddf,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #ffffff,
-    400: #ffffff,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #ffffff,
-    A400: #ffffff,
-    A700: #ffffff,
-  ),
-);
-
-$md-taube: (
-  50: #f2f4f8,
-  100: #dee4ee,
-  200: #c9d2e3,
-  300: #b3c0d7,
-  400: #a2b3cf,
-  500: #92a5c6,
-  600: #8a9dc0,
-  700: #7f93b9,
-  800: #758ab1,
-  900: #6379a4,
-  A100: #ffffff,
-  A200: #e2ecff,
-  A400: #afc9ff,
-  A700: #96b8ff,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #000000,
-    800: #000000,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000,
-  ),
-);
-
-$md-nebel: (
-  50: #fdfdfe,
-  100: #f9fbfd,
-  200: #f6f8fb,
-  300: #f2f5f9,
-  400: #eff2f8,
-  500: #ecf0f7,
-  600: #eaeef6,
-  700: #e7ecf5,
-  800: #e4e9f3,
-  900: #dfe5f1,
-  A100: #ffffff,
-  A200: #ffffff,
-  A400: #ffffff,
-  A700: #ffffff,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #000000,
-    800: #000000,
-    900: #000000,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000,
-  ),
-);
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$rki-primary: mat.define-palette($md-royalblue); //mat.define-palette(mat.$indigo-palette);
-$rki-accent: mat.define-palette($md-nebel);
-// The warn palette is optional (defaults to red).
-$rki-warn: mat.define-palette(mat.$red-palette);
+.subheading-2-fontsize {
+  font-size: $subheading-2-fontsize !important;
+  line-height: $subheading-2-lineheight !important;
+  font-weight: $subheading-2-fontweight !important;
+}
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -213,6 +91,8 @@ $theme: map-merge(
 @include home-page-component($theme);
 @include datasource-links-component($theme);
 @include datasource-licence-component($theme);
+@include datasource-tags-component($theme);
+@include toc-component($theme);
 
 /* You can add global styles to this file, and also import other style files */
 

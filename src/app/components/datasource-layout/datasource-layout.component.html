@@ -57,10 +57,25 @@
         </div>
 
         <ng-template #wideATC>
-            <div class="abstract-tag-cite-container">
+            <div class="abstract-tag-container">
+                <div class="left-column">
+                    <div class="abstract-container">
+                        <ng-template [cdkPortalOutlet]="portalsByPosition['abstract'] | async"></ng-template>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <ng-template [cdkPortalOutlet]="portalsByPosition['tag'] | async"></ng-template>
+                </div>
+            </div>
+
+            <div class="content-cite-licence-container">
+                
+            </div>
+
+            <!-- <div class="abstract-tag-cite-container">
                 <div class="left-column">
                     <div class="abstract-container section-container">
-                        <ng-template [cdkPortalOutlet]="portalsByPosition['abstract'] | async"></ng-template>
+                        
                     </div>
                     <div class="content-container section-container">
                         <ng-template [cdkPortalOutlet]="portalsByPosition['content'] | async"></ng-template>
@@ -71,7 +86,7 @@
                 </div>
                 <div class="right-column">
                     <div class="tag-container section-container">
-                        <ng-template [cdkPortalOutlet]="portalsByPosition['tag'] | async"></ng-template>
+                        
                     </div>
 
                     <mat-divider></mat-divider>
@@ -100,7 +115,7 @@
                         </app-keep-in-view>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </ng-template>
 
 

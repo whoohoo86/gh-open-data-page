@@ -1,7 +1,8 @@
-<h2 class="mat-title">Inhaltsverzeichnis</h2>
+<!-- <h2 class="mat-title">Inhaltsverzeichnis</h2> -->
 <mat-list class="toc">
     <mat-list-item *ngFor="let tocItem of tocItems" class="toc-item">
         <!-- <mat-icon class="toc-item-icon">chevron_right</mat-icon> -->
+        <div class="active-indicator"></div>
         <a pageScroll #tocItem [href]="'#' + tocItem.fragment" class="toc-item-link">{{tocItem.label}}</a>
     </mat-list-item>
 </mat-list>

@@ -21,8 +21,8 @@ interface TocItem {
 export class TableOfContentComponent implements OnInit, OnChanges, AfterViewInit, OnInit {
 
   private readonly defaultTocItems = [
-    { label: 'Zusammenfassung', fragment: 'abstract' },
-    { label: 'Dateien / Inhalt', fragment: 'content' }
+    // { label: 'Zusammenfassung', fragment: 'abstract' },
+    // { label: 'Dateien / Inhalt', fragment: 'content' }
   ];
   tocItems: TocItem[] = [];
 
@@ -33,9 +33,9 @@ export class TableOfContentComponent implements OnInit, OnChanges, AfterViewInit
 
   constructor(private renderer: Renderer2, private markdownService: MarkdownService, @Inject(DOCUMENT) private document: any) {
   }
+
   ngAfterViewInit(): void {
     if (this.tocElements && this.tocElements.length > 0) {
-      // console.log("initial activation");
       this.activateElement(this.tocElements.first.nativeElement);
     }
   }
@@ -66,8 +66,6 @@ export class TableOfContentComponent implements OnInit, OnChanges, AfterViewInit
     return result;
   }
 
-  private lastScrollTop = 0;
-
   @HostListener('window:scroll', ['$event.target'])
   onWindowScrolled(eventTarget: any) {
     const scrollContainer = eventTarget.scrollingElement;
@@ -82,16 +80,13 @@ export class TableOfContentComponent implements OnInit, OnChanges, AfterViewInit
         const targetId = _.last(tocLinkElem.nativeElement.href.split('#'));
         if (targetId) {
           const targetElem = scrollContainer.querySelector(`#${decodeURIComponent(targetId)}`);
-
-          console.log("item", targetElem.getBoundingClientRect());
-
+ 
           if (last === tocLinkElem && this.isInViewport(targetElem)) {
             toActivate = last.nativeElement;
             break;
           }
 
           if (Math.floor(targetElem.getBoundingClientRect().top) <= 0) {
-            console.log("WINNER", targetElem);
             toActivate = tocLinkElem.nativeElement;
             break;
           }
@@ -114,19 +109,17 @@ export class TableOfContentComponent implements OnInit, OnChanges, AfterViewInit
     );
   };
 
-
   private activateElement(element: HTMLElement) {
-
     this.activeElement = element;
-    this.renderer.addClass(element, 'active');
+    // element.parentElement?.parentElement
+    this.renderer.addClass(element.parentElement?.parentElement, 'active');
   }
 
   private cleanup() {
     if (this.activeElement) {
-      this.renderer.removeClass(this.activeElement, 'active');
+      this.renderer.removeClass(this.activeElement.parentElement?.parentElement, 'active');
       this.activeElement = undefined;
     }
-
   }
 
 }

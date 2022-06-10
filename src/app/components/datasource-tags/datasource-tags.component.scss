@@ -1,18 +1,28 @@
 @use '@angular/material' as mat;
+@use 'sass:map';
 
-.tag-list {
-    // .tag {
-    //     background: #ecf0f7;
-    // }
+@import "/src/palettes.scss";
 
-    .tag-chip {
-        @include mat.elevation(1);
-    }
+@mixin datasource-tags-component($theme) {
+    $color-config: mat.get-color-config($theme);
+    // @debug $rki-nebel;
 
-    .tag-link {
-        text-decoration: inherit;
-        color: inherit;
-        font-weight: 400;
+    .tag-list {
+        .tag {
+            // background: #ecf0f7;
+        }
+
+        .tag-chip {
+            @include mat.elevation(1);
+            border-radius: 3px;
+            flex: 1 1 auto;
+        }
+
+        .tag-link {
+            text-decoration: inherit;
+            color: inherit;
+            font-weight: 400;
+            white-space: nowrap;
+        }
     }
 }
-

@@ -1,10 +1,12 @@
 @use 'sass:map';
 @use "sass:math";
 @use '~@angular/material' as mat;
+@import '/src/palettes.scss';
 
-$default-margin-bottom: 24px;
+$default-margin-bottom: 40px;
 $default-margin-horizontal: 72px;
 $max-width: 1300px;
+$nebel: map.get($rki-nebel, '400');
 
 @mixin datasource-layout-component($theme) {
     $color-config: mat.get-color-config($theme);
@@ -64,140 +66,141 @@ $max-width: 1300px;
 
             box-sizing: border-box;
 
-            .content-container {
-                margin-bottom: $default-margin-bottom;
-            }
-
-            .two-col-layout {
-                display: flex;
-                flex-direction: row;
-                align-items: stretch;
-
-                .left-column {
-                    flex: 1;
-                    // max-width: calc(100% - 450px);
-                    margin-right: $default-margin-horizontal;
-
-                    // background: orange;
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-
-                    // margin-bottom: $default-margin-bottom;
-                }
-
-                .right-column {
-                    flex: 0 0 auto;
-                    max-width: 420px;
-                    height: 100%;
-
-                    display: flex;
-                    flex-direction: column;
-
-                    // margin-bottom: $default-margin-bottom;
-                }
-            }
-
-            .abstract-tag-cite-container {
+            .abstract-tag-container {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: flex-start;
                 gap: $default-margin-horizontal;
+                margin-bottom: $default-margin-bottom;
 
                 // gap: $default-margin-horizontal;
 
                 .left-column {
-                    flex: 3;
-                    max-width: calc(75% - #{$default-margin-horizontal * 0.75});
+                    flex: 68;
+                    max-width: calc(68% - #{$default-margin-horizontal * 0.68});
                     
-                    display: flex;
-                    flex-direction: column;
+                    // display: flex;
+                    // flex-direction: column;
                 }
 
 
                 .right-column {
-                    flex: 1;
-                    max-width: calc(25% - #{$default-margin-horizontal * 0.25});
+                    flex: 32;
+                    max-width: calc(32% - #{$default-margin-horizontal * 0.32});
 
-                    display: flex;
-                    flex-direction: column;
+                    // display: flex;
+                    // flex-direction: column;
 
-                    mat-divider {
-                        margin-bottom: $default-margin-bottom;
-                    }
+                    // mat-divider {
+                    //     margin-bottom: $default-margin-bottom;
+                    // }
 
                 }
 
-                .section-container {
-                    margin-bottom: $default-margin-bottom;
-                }
             }
 
-            .abstract-tag-cite-container-small {
-                // margin-bottom: $default-margin-bottom;
-
-                .two-col-layout {
-                    .left-column {
-                        flex: 1;
-                        margin-right: 50px;
-                    }
-                    .right-column {
-                        flex: 0 0 40%;
-
-                        // min-width: 220px;
-                    }
-                }
-
-                // @media (max-width: 700px) {
-                //     .tag-cite-container {
-                //         flex-direction: column;
-                //     }
-
-                //     .left-column {
-                //         margin-right: 0;
-                //         margin-bottom: $default-margin-bottom;
-                //     }
-                // }
+            .content-cite-licence-container {
+                background-color: $nebel;
+                padding: $default-margin-bottom 0;
             }
+
+            // .two-col-layout {
+            //     display: flex;
+            //     flex-direction: row;
+            //     align-items: stretch;
+
+            //     .left-column {
+            //         flex: 1;
+            //         // max-width: calc(100% - 450px);
+            //         margin-right: $default-margin-horizontal;
+
+            //         // background: orange;
+            //         display: flex;
+            //         flex-direction: column;
+            //         height: 100%;
+
+            //         // margin-bottom: $default-margin-bottom;
+            //     }
+
+            //     .right-column {
+            //         flex: 0 0 auto;
+            //         max-width: 420px;
+            //         height: 100%;
+
+            //         display: flex;
+            //         flex-direction: column;
+
+            //         // margin-bottom: $default-margin-bottom;
+            //     }
+            // }
+
+            
+
+            // .abstract-tag-cite-container-small {
+            //     // margin-bottom: $default-margin-bottom;
+
+            //     .two-col-layout {
+            //         .left-column {
+            //             flex: 1;
+            //             margin-right: 50px;
+            //         }
+            //         .right-column {
+            //             flex: 0 0 40%;
+
+            //             // min-width: 220px;
+            //         }
+            //     }
+
+            //     // @media (max-width: 700px) {
+            //     //     .tag-cite-container {
+            //     //         flex-direction: column;
+            //     //     }
+
+            //     //     .left-column {
+            //     //         margin-right: 0;
+            //     //         margin-bottom: $default-margin-bottom;
+            //     //     }
+            //     // }
+            // }
         }
 
-        @media (max-width: 700px) {
-            .header {
-                padding: 45px math.div($default-margin-horizontal, 2);
-            }
+    //     @media (max-width: 700px) {
+    //         .header {
+    //             padding: 45px math.div($default-margin-horizontal, 2);
+    //         }
 
-            .main {
-                padding: math.div($default-margin-bottom, 2) math.div($default-margin-horizontal, 2);
+    //         .main {
+    //             padding: math.div($default-margin-bottom, 2) math.div($default-margin-horizontal, 2);
 
-                .abstract-tag-cite-container-small {
-                    .two-col-layout {
-                        flex-direction: column;
+    //             .abstract-tag-cite-container-small {
+    //                 .two-col-layout {
+    //                     flex-direction: column;
 
-                        .left-column {
-                            margin-right: 0;
-                            // margin-bottom: $default-margin-bottom;
-                        }
+    //                     .left-column {
+    //                         margin-right: 0;
+    //                         // margin-bottom: $default-margin-bottom;
+    //                     }
 
-                        .right-column {
-                            max-width: unset;
-                        }
-                    }
-                }
-            }
-        }
+    //                     .right-column {
+    //                         max-width: unset;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
     }
 
-    .datasource-layout-comp.datasource-layout-small {
-        .header {
-            .title-container {
-                .title {
-                    min-width: 100%;
-                }
-            }
-        }
-        .section-container {
-            margin-bottom: math.div($default-margin-bottom, 2);
-        }
-    }
+    // .datasource-layout-comp.datasource-layout-small {
+    //     .header {
+    //         .title-container {
+    //             .title {
+    //                 min-width: 100%;
+    //             }
+    //         }
+    //     }
+    //     .section-container {
+    //         margin-bottom: math.div($default-margin-bottom, 2);
+    //     }
+    // }
 }
