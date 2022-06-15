@@ -36,5 +36,5 @@ runs:
       run: |
         cd $GITHUB_WORKSPACE
         npm install
-        npm run ng -- deploy --repo=https://github.com/$GITHUB_REPOSITORY.git --base-href=/${GITHUB_REPOSITORY#*/}/ --name=EckelmannF --email=EckelmannF@rki.de --branch=${{inputs.WEBSITE_BRANCH}}
+        npm run ng -- deploy --repo=https://github.com/$GITHUB_REPOSITORY.git --base-href=/${GITHUB_REPOSITORY#*/}/ --branch=${{inputs.WEBSITE_BRANCH}}
       shell: bash
