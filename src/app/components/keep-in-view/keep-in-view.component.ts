@@ -13,29 +13,37 @@ export class KeepInViewComponent implements OnInit {
   @Input() topOffset: number = 0;
 
   @ViewChild('keepInView') keepInViewElement!: ElementRef;
-  updateTopOffsetDebounce = _.debounce(x => this.updateTop(x), 30, { maxWait: 100 });
+  // updateTopOffsetDebounce = _.debounce(x => this.updateTop(x), 30, { maxWait: 100 });
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2, @Inject(DOCUMENT) private document: any) { }
 
   ngOnInit(): void {
   }
 
-  top = 0;
+  // top = 0;
 
   @HostListener('window:scroll', ['$event.target'])
   onScroll(eventTarget: any) {
     const bb = this.elementRef.nativeElement.getBoundingClientRect();
 
-    if (bb.top < 0) {
-      this.updateTop(Math.abs(bb.top));
+    if (bb.top <= 0) {
+      this.renderer.addClass(this.keepInViewElement.nativeElement, 'fixed');
+      this.renderer.setStyle(this.keepInViewElement.nativeElement, 'top', `${this.topOffset}px`);
+
+      const parentWidth = this.keepInViewElement.nativeElement.parentElement.clientWidth || 0;
+      this.renderer.setStyle(this.keepInViewElement.nativeElement, 'width', `${parentWidth}px`);
+      // this.updateTop(Math.abs(bb.top));
     }
     else {
-      this.updateTop(0);
+      this.renderer.removeClass(this.keepInViewElement.nativeElement, 'fixed');
+      this.renderer.removeStyle(this.keepInViewElement.nativeElement, 'top');
+      this.renderer.removeStyle(this.keepInViewElement.nativeElement, 'width');
+      // this.updateTop(0);
     }
   }
 
-  private updateTop(top: number) {
-    this.top = top;
-    this.renderer.setStyle(this.keepInViewElement.nativeElement, 'top', `${this.topOffset + top}px`);
-  }
+  // private updateTop(top: number) {
+  //   this.top = top;
+  //   this.renderer.setStyle(this.keepInViewElement.nativeElement, 'top', `${this.topOffset + top}px`);
+  // }
 }
