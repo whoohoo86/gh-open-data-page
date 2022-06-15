@@ -1,7 +1,17 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+
+/src/github-action/node_modules
+/src/github-action/dist
+
+
+
+
 # compiled output
-/dist
+/dist/*
+# reinclude bundled github-action
+!/dist/github-action
+
 /tmp
 /out-tsc
 # Only exists if Bazel was run
