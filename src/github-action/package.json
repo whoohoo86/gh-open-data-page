@@ -16,6 +16,7 @@
         "@vercel/ncc": "^0.33.1"
       },
       "scripts": {
-        "build": "tsc && ncc build dist/main.js -o ../../dist/github-action"
+        "lala": "ncc help" ,
+        "build": "tsc && ncc build dist/main.js -o ../../createDatasourceJsonAction"
       }
   }
