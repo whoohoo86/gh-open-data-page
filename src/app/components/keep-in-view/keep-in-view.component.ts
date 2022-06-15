@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, ElementRef, HostListener, Inject, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import * as _ from 'lodash';
-import { isBuffer } from 'lodash';
 
 @Component({
   selector: 'app-keep-in-view',
@@ -13,14 +12,11 @@ export class KeepInViewComponent implements OnInit {
   @Input() topOffset: number = 0;
 
   @ViewChild('keepInView') keepInViewElement!: ElementRef;
-  // updateTopOffsetDebounce = _.debounce(x => this.updateTop(x), 30, { maxWait: 100 });
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2, @Inject(DOCUMENT) private document: any) { }
 
   ngOnInit(): void {
   }
-
-  // top = 0;
 
   @HostListener('window:scroll', ['$event.target'])
   onScroll(eventTarget: any) {
@@ -32,18 +28,11 @@ export class KeepInViewComponent implements OnInit {
 
       const parentWidth = this.keepInViewElement.nativeElement.parentElement.clientWidth || 0;
       this.renderer.setStyle(this.keepInViewElement.nativeElement, 'width', `${parentWidth}px`);
-      // this.updateTop(Math.abs(bb.top));
     }
     else {
       this.renderer.removeClass(this.keepInViewElement.nativeElement, 'fixed');
       this.renderer.removeStyle(this.keepInViewElement.nativeElement, 'top');
       this.renderer.removeStyle(this.keepInViewElement.nativeElement, 'width');
-      // this.updateTop(0);
     }
   }
-
-  // private updateTop(top: number) {
-  //   this.top = top;
-  //   this.renderer.setStyle(this.keepInViewElement.nativeElement, 'top', `${this.topOffset + top}px`);
-  // }
 }

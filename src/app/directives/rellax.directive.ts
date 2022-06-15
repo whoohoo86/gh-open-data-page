@@ -8,7 +8,7 @@ export class RellaxDirective implements OnDestroy, OnChanges {
   private rellaxIns: Rellax.RellaxInstance;
   @Input() rellax?: Rellax.RellaxOptions;
 
-  private defaultOptions: Rellax.RellaxOptions = {wrapper: '.content-wrapper'};
+  private defaultOptions: Rellax.RellaxOptions = {};
 
   constructor(elementRef: ElementRef) {
     this.rellaxIns = new Rellax(elementRef.nativeElement, {...this.defaultOptions, ...this.rellax});
