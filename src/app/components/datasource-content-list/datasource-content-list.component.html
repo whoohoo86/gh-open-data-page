@@ -8,7 +8,7 @@
                     </div>
 
                     <span class="file-name file-item-element" [title]="file.name" (click)="showPreview(file)">{{file.name | filenameBeautify}}</span>
-                    <span *ngIf="file.lfs" class="file-lfs-mark file-item-element" (click)="showPreview(file)">LFS</span>
+                    <!-- <span *ngIf="file.lfs" class="file-lfs-mark file-item-element" (click)="showPreview(file)">LFS</span> -->
                     <div class="file-extention file-item-element" (click)="showPreview(file)">
                         {{file | datasourceContentExt | uppercase }}
                     </div>

@@ -18,8 +18,14 @@ export class KeepInViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @HostListener('window:scroll', ['$event.target'])
-  onScroll(eventTarget: any) {
+  // TODO: auch auf resize achte
+  @HostListener('window:resize')
+  onResize() {
+    _.delay(() => this.onScroll(), 30);
+  }
+
+  @HostListener('window:scroll')
+  onScroll() {
     const bb = this.elementRef.nativeElement.getBoundingClientRect();
 
     if (bb.top <= 0) {

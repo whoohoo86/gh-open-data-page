@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use '~@angular/material' as mat;
+@use "sass:map";
+@use "~@angular/material" as mat;
 
 @mixin datasource-content-preview-component($theme) {
     $color-config: mat.get-color-config($theme);
@@ -19,9 +19,22 @@
             display: flex;
 
             .title {
+                display: flex;
+                align-items: center;
+
                 flex: 1;
                 overflow: hidden;
-                text-overflow: ellipsis;
+                font-size: 20px;
+
+                .icon {
+                    margin-right: 0.5em;
+                }
+
+                .text {
+                    text-overflow: ellipsis;
+                    max-width: calc(100% - (24px + 0.5em));
+                    overflow: hidden;
+                }
 
                 .lfs {
                     color: teal;
@@ -37,18 +50,21 @@
         }
 
         .lfs-info-container {
-            width: 85%;
-            max-height: 100%;
+            // width: 85%;
+            // max-height: 100%;
 
-            .title {
-                display: flex;
-                align-items: center;
+            // .title {
+            //     display: flex;
+            //     align-items: center;
 
-                .icon.sad-face {
-                    font-size: 2em;
-                    height: 48px;
-                }
-            }
+            //     .icon.sad-face {
+            //         font-size: 1.25em;
+            //         line-height: 48px;
+            //         height: 48px;
+            //         width: 48px;
+            //         margin-left: 8px;
+            //     }
+            // }
         }
 
         .no-preview-available {
@@ -60,8 +76,12 @@
                 align-items: center;
 
                 .icon.sad-face {
-                    font-size: 2em;
+                    font-size: 1.25em;
+                    line-height: 48px;
                     height: 48px;
+
+                    width: 48px;
+                    margin-left: 8px;
                 }
             }
         }

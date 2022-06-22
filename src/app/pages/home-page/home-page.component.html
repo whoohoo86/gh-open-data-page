@@ -8,9 +8,9 @@
                 <div class="title">
                     {{datasource.name}}
                 </div>
-                <div class="licence-small">
+                <!-- <div class="licence-small">
                     <app-datasource-licence [datasource]="datasource"></app-datasource-licence>
-                </div>
+                </div> -->
             </div>
 
             <div class="author-container">
@@ -56,9 +56,10 @@
 
     <div class="doc-container" [class.small]="isSmall$ | async">
         <div class="left-column">
-            <div class="mat-headline">Dokumentation</div>
             <!-- <div *ngIf="isSmall$ | async">SMALL</div> -->
-            <app-keep-in-view [topOffset]="16">
+            <app-keep-in-view [topOffset]="8">
+                <div class="mat-headline">Dokumentation</div>
+
                 <app-table-of-content [datasource]="datasource">
                 </app-table-of-content>
             </app-keep-in-view>

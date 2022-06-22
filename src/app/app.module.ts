@@ -30,6 +30,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { CdkTreeModule } from '@angular/cdk/tree';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { CsvTableComponent } from './components/csv-table/csv-table.component';
@@ -145,6 +146,7 @@ function getBaseHref(platformLocation: PlatformLocation): string {
     MatButtonModule,
     MatTableModule,
     ClipboardModule,
+    CdkTreeModule,
     MatMenuModule,
     MatFormFieldModule,
     OverlayModule,

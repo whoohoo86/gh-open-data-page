@@ -1,7 +1,8 @@
 <div class="datasource-content-preview-component mat-elevation-z9" *ngIf="content && content.$type === 'file'">
   <mat-toolbar class="header" color="accent">
     <span class="title">
-      {{content.name}}
+      <mat-icon class="icon"> {{content | datasourceContentExt | extToIconname}} </mat-icon>
+      <span class="text" [title]="content.name">{{content.name}}</span>
       <span class="lfs" *ngIf="content.lfs">LFS</span>
     </span>
 
@@ -18,7 +19,7 @@
   </mat-toolbar>
 
   <div class="preview-container">
-    <div class="lfs-info-container" *ngIf="content.lfs">
+    <div class="lfs-info-container no-preview-available" *ngIf="content.lfs">
       <div class="title mat-headline">
         <div class="text">Die Vorschau für LFS-Dateien ist leider nicht möglich</div>
         <mat-icon class="icon sad-face">sentiment_very_dissatisfied</mat-icon>

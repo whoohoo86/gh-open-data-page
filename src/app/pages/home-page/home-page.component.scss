@@ -1,9 +1,9 @@
-@use 'sass:map';
+@use "sass:map";
 @use "sass:math";
-@use '~@angular/material' as mat;
+@use "~@angular/material" as mat;
 @import "/src/palettes.scss";
 
-$default-section-margin-vertical: 40px;
+$default-section-margin-vertical: 60px;
 $default-section-margin-horizontal: 72px;
 
 $default-component-margin-vertical: 16px;
@@ -55,8 +55,10 @@ $nebel: map.get($rki-nebel, 400);
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-color: mat.get-color-from-palette($primary-palette);
-                height: 90px;
-                width: 306px;
+                height: 75px;
+                width: 255px;
+                // height: 90px;
+                // width: 306px;
                 margin: 25px 0;
             }
         }
@@ -115,9 +117,18 @@ $nebel: map.get($rki-nebel, 400);
 
             .abstract {
                 color: mat.get-color-from-palette($accent-palette);
+                text-align: justify;
             }
 
             // gap: $default-margin-horizontal;
+
+            app-datasource-tags {
+                .mat-title {
+                    line-height: 48px;
+
+                    // margin-bottom: 32px;
+                }
+            }
 
             .left-column {
                 flex: 68;
@@ -148,6 +159,7 @@ $nebel: map.get($rki-nebel, 400);
             justify-content: center;
 
             .date {
+                margin-top: -16px;
                 margin-bottom: $default-component-margin-vertical;
             }
 
@@ -173,7 +185,7 @@ $nebel: map.get($rki-nebel, 400);
                 justify-content: space-between;
                 align-items: flex-start;
                 gap: $default-component-margin-horizontal;
-                padding: $default-section-margin-vertical $default-section-margin-horizontal;
+                padding: 0 $default-section-margin-horizontal;
 
                 .left-column {
                     // height: 100%;
@@ -227,7 +239,7 @@ $nebel: map.get($rki-nebel, 400);
             &.small {
                 flex-wrap: wrap;
                 gap: unset;
-                app-keep-in-view {
+                .left-column {
                     display: none;
                 }
             }
