@@ -185,7 +185,7 @@ async function run() {
 
     core.info(`Creating datasource.json for repo '${github.context.repo.owner}/${github.context.repo.repo}'.`);
 
-    const topics$ = octokit.rest.repos.getAllTopics(github.context.repo);
+    // const topics$ = octokit.rest.repos.getAllTopics(github.context.repo);
 
     const externalLinks: ExternalLink[] = [
         { $type: 'github', url: repo.html_url }
@@ -204,7 +204,7 @@ async function run() {
     const isLfsFile = await createLfsFileDescriminator(octokit, github.context.repo, tree);
     const relevantTreeItems = tree.filter(node => node.path && ContentPathPredicates.every(x => x(node.path!)));
     const content = treeIt(relevantTreeItems, isLfsFile, github.context.repo, branch);
-    const tags = (await topics$).data.names.filter(x => !TagBlacklist.includes(x.toLowerCase()));
+    // const tags = (await topics$).data.names.filter(x => !TagBlacklist.includes(x.toLowerCase()));
 
     const datasourceJson: OpenDataDatasource = {
         id: repo.name,
