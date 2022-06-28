@@ -13,7 +13,6 @@ runs:
   using: "composite"
   steps:
     - name: Pull OpenDataPage
-      # run: git clone https://github.com/whoohoo86/gh-open-data-page.git
       uses: actions/checkout@v2
       with:
         repository: "whoohoo86/gh-open-data-page"
@@ -23,13 +22,11 @@ runs:
       with:
         GH_TOKEN: ${{inputs.GH_TOKEN}}
 
-    # Runs a single command using the runners shell
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.5.1
       with:
         node-version: 14.x
 
-    # Runs a set of commands using the runners shell
     - name: Prepare and deploy
       env:
         GH_TOKEN: ${{inputs.GH_TOKEN}}

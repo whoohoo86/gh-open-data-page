@@ -177,7 +177,6 @@ function treeIt(items: GithubTreeItem[], isLfsFile: (x: string) => boolean, repo
 
 async function run() {
     const ghToken = core.getInput('GH_TOKEN');
-    const cwd = core.getInput('CWD');
 
     const octokit = github.getOctokit(ghToken);
     const { data: repo } = await octokit.rest.repos.get(github.context.repo);
@@ -219,7 +218,7 @@ async function run() {
 
     core.info(`Created datasource.json with\n${JSON.stringify(datasourceJson)}`);
 
-    const dir = path.join(cwd, './src/app/data/datasource.json');
+    const dir = './src/app/data/datasource.json';
 
     core.info(`Writing datasource.json to '${dir}'.`);
 

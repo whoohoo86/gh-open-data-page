@@ -23,9 +23,6 @@ $subheading-2-fontsize: 16px;
 $subheading-2-lineheight: 24px;
 $subheading-2-fontweight: 500;
 
-// $font-size: 16px,
-// $line-height: 1.5,
-// $word-wrap: break-word
 $git-foreground: #24292f;
 $git-font-family: '-apple-system,  BlinkMacSystemFont,  "Segoe UI",  Helvetica,  Arial,  sans-serif,  "Apple Color Emoji",  "Segoe UI Emoji"';
 $git-typography: mat.define-typography-config(
@@ -75,7 +72,6 @@ $theme: map-merge(
   )
 );
 
-// @debug $theme;
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -99,10 +95,8 @@ $theme: map-merge(
 
 html,
 body {
-  // height: 100%;
   padding: 0;
   margin: 0;
-  // background: red;
 }
 
 html.cdk-global-scrollblock {
@@ -110,9 +104,6 @@ html.cdk-global-scrollblock {
 }
 
 body {
-  // overflow-x: hidden;
-  // background: green;
-  // max-height: 100%;
   max-width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -124,14 +115,6 @@ body {
     overflow: hidden;
   }
 }
-
-// .content-wrapper {
-//   // max-height: 100%;
-//   // max-width: 100%;
-//   // overflow: auto;
-// }
-
-// body { overflow-y: scroll; }
 
 .overlay-dialog-panel {
   background-color: white;
@@ -154,7 +137,3 @@ body {
     max-height: 87vh;
   }
 }
-
-// * {
-//   box-sizing: border-box;
-// }
