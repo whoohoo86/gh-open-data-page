@@ -11,7 +11,7 @@ MF4 | Informations- und Forschungsdatenmanagement
 ---
 
 Eckelmann, Fabian(2022): RKI OpenData-Website, Berlin: Zenodo. DOI:[10.5281/zenodo.XXXXX](https://doi.org/10.5281/zenodo.XXXX).  
-Das GitHub Repository "RKI OpenData-Website" ist lizenziert unter der [MIT License]([https://creativecommons.org/licenses/by/4.0/deed.de](https://mit-license.org/)).   
+Das GitHub Repository "RKI OpenData-Website" ist lizenziert unter der [MIT License](https://mit-license.org/).   
 
 ## Einleitung 
 
