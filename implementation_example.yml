@@ -23,4 +23,4 @@ jobs:
       uses: robert-koch-institut/RKI_OpenData-Website@main
       with:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        WEBSITE_BRANCH: "open-data-website"
+        WEBSITE_BRANCH: "opendata-website"
