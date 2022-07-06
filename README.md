@@ -1,17 +1,19 @@
 Dokumentation
-# RKI OpenData-Website
+# OpenData-Website
 
 [Robert Koch-Institut](https://grid.ac/institutes/grid.13652.33) | RKI  
 Nordufer 20  
 13353 Berlin  
 
-[Fabian Eckelmann](https://github.com/eckelmannf)
-MF4 | Informations- und Forschungsdatenmanagement
+[Hannes Wuensche](https://orcid.org/0000-0002-8837-0326)  
+[Pia Rissom]()  
+[Fabian Eckelmann](https://github.com/eckelmannf)  
+MF4 | Informations- und Forschungsdatenmanagement  
 
 ---
 
-Eckelmann, Fabian(2022): RKI OpenData-Website, Berlin: Zenodo. DOI:[10.5281/zenodo.XXXXX](https://doi.org/10.5281/zenodo.XXXX).  
-Das GitHub Repository "RKI OpenData-Website" ist lizenziert unter der [MIT License](https://mit-license.org/).   
+Wuensche, Hannes; Rissom, Pia; Eckelmann, Fabian (2022): OpenData-Website, Berlin: Zenodo. DOI:[10.5281/zenodo.XXXXX](https://doi.org/10.5281/zenodo.XXXX).  
+Das GitHub Repository "OpenData-Website" ist lizenziert unter der [MIT License](https://mit-license.org/).   
 
 ## Einleitung 
 
@@ -41,15 +43,15 @@ Die Datei- und Ordnerstruktur des Datensatz-Repositories wird auf der Datensatz-
 
 ## Deployment mit GitHub-Actions
 
-Die Erstellung der Datensatz-Website erfolgt durch zwei GitHub-Actions, beide sind im vorliegenden Repository enthalten. 
-Im Unterordner [`/createDatasourceJson/`](/createDatasourceJson/) befindest sich eine Action, die mittels der Github-API alle für die Website benötigten Daten zusammenträgt und in eine JSON-Datei schreibt (./src/app/data/datasource.json).
+Für das Deployment der Datensatz-Website zwei GitHub-Actions zentral, beide sind im vorliegenden Repository enthalten. 
+Im Unterordner [`/createDatasourceJsonAction/`](/createDatasourceJsonAction/) befindest sich die Action "Create datasource.json", die mittels der Github-API alle für die Website benötigten Daten zusammenträgt und in eine JSON-Datei schreibt (./src/app/data/datasource.json).
 
-Über die im Root-Verzeichnis enthaltene [action.yml](#Action-RKI-Datensatz-Website) stelt das Repository selbst eine aufrufbare Action dar. Die [action.yml](#Action-RKI-Datensatz-Website) enthält alle Schritte, um die Datensatz-Website für eigene Datensatz-Repositories zu bauen und deployen. Die [createDatasourceJson](/createDatasourceJson/) ist dabei ein Teilschritt des Workflows der [action.yml](#Action-RKI-Datensatz-Website).  
+Über die im Root-Verzeichnis enthaltene [action.yml](#Action-Bulid-and-deploy-Opendata-Website) stellt das Repository selbst die aufrufbare Action "Bulid and deploy Opendata-Website" dar. Die [action.yml](#Action-Bulid-and-deploy-Opendata-Website) enthält alle Schritte, um die Datensatz-Website für eigene Datensatz-Repositories zu bauen und deployen. Die Action "Create datasource.json" ist dabei ein Teilschritt des Workflows der Action "Bulid and deploy Opendata-Website".  
 Damit die Action erfolgreich ausgeführt werden kann, müssen die oben genannten [Voraussetzungen](#voraussetzungen) erfüllt sein.
 
-### Action "createDatasourceJson"
+### Action "Create datasource.json"
 
-Die Action "createDatasourceJson" ist für das Erstellen der datasource.json (`/src/app/data/datasource.json`) verantwortlich und wird im Workflow der [action.yml](#Action-RKI-Datensatz-Website) aufgerufen. Der Quellcode der Action befindet sich in `/src/github-action`. Folgende Schritte werden durch die Action ausgeführt:
+Die Action "Create datasource.json" ist für das Erstellen der datasource.json (`/src/app/data/datasource.json`) verantwortlich und wird im Workflow der Action ["Bulid and deploy Opendata-Website" ](#Action-Bulid-and-deploy-Opendata-Website) aufgerufen. Der Quellcode der Action befindet sich in `/src/github-action`. Folgende Schritte werden durch die Action ausgeführt:
 
 1. Authentifizierung an GitHub-API mittels GH_TOKEN
 2. Abfragen des Datensatz-Repositories, aus dem heraus die Action aufgerufen wurde
@@ -60,14 +62,14 @@ Die Action "createDatasourceJson" ist für das Erstellen der datasource.json (`/
 7. Lizenz auslesen
 8. Schreiben der datasource.json nach `./src/app/data/datasource.json`
 
-### Action "RKI OpenData-Website" 
+### Action "Bulid and deploy Opendata-Website" 
 
-Auf Basis der [action.yml](/action.yml) erzeugt und deployed die Action "RKI OpenData-Website" eine Opendata-Website, für das sie aufrufende Datensatz-Repository. Die [action.yml](/action.yml) führt dazu vier Schritte aus:
+Auf Basis der [action.yml](/action.yml) erzeugt und deployed die Action "Bulid and deploy Opendata-Website" eine Datensatz Website des aufrufenden Datensatz-Repositories. Die  Action führt dazu vier Schritte aus, die in der [action.yml](/action.yml) definiert sind:
 
-1. Pullen es "RKI OpenData-Website"-Repositories
-2. Erzeugen der [datasource.json](#Action-createDatasourceJson)
+1. Pullen es "OpenData-Website"-Repositories
+2. Erzeugen der [datasource.json](#Action-"Create-datasource.json")
 3. Installation Node.js
-5. Build und Deploy der Opendata Website (nutzt [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages))
+5. Build und Deploy der Opendata-Website (nutzt [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages))
 
 #### Inputs
 
@@ -98,11 +100,11 @@ Zwei Schritte sind für die Implementierung innerhalb eines Datensatz-Repositori
 
 ### Anlegen eines Workflows
 
-Um die Action ["RKI OpenData-Website"](#Action-"RKI OpenData-Website") in einem eigenen Datensatz-Repository zu nutzen muss folgender Schritt in einem GitHub-Workflow deklariert werden.
+Um die Action ["OpenData-Website"](#Action-"OpenData-Website") in einem eigenen Datensatz-Repository zu nutzen muss folgender Schritt in einem GitHub-Workflow deklariert werden.
 
 ```yaml
 - name: Create and deploy opendata website
-  uses: robert-koch-institut/RKI_OpenData-Website@main
+  uses: robert-koch-institut/OpenData-Website@main
   with:
     GH_TOKEN: ${{ secrets.GH_TOKEN }}
     WEBSITE_BRANCH: "opendata-website"
@@ -112,7 +114,7 @@ GitHub-Workflows werden im `.github/workflows/` abgelegt. Ein Beispiel für eine
 
 ### Festlegung des Source Branches
 
-Nach erfolgreichem Ausführen der [Action "RKI OpenData-Website"](#Action-"RKI-OpenData-Website") ist im Datensatz-Repository eine neuer Branch `opendata-website` (deflaut) angelegt. Um die darin gebaute Website über GitHub-Pages anzeigen zu lassen muss unter 
+Nach erfolgreichem Ausführen der [Action "OpenData-Website"](#Action-"OpenData-Website") ist im Datensatz-Repository eine neuer Branch `opendata-website` (deflaut) angelegt. Um die darin gebaute Website über GitHub-Pages anzeigen zu lassen muss unter 
 
 > Settings > Pages > Source
 
@@ -121,13 +123,13 @@ Der Branch `opendata-website` für das Pages-Deployment ausgewählt und gespeich
 
 ## Website
 
-Die Website ist in Angular 12 geschrieben und wird mittels der Action [RKI OpenData-Website](#Action-"RKI-OpenData-Website") transpiliert und innerhalb des GitHub Datensatz-Repositories in einen eigenen Branch [(siehe Inputs)](#Inputs) gepusht. Der Branch wird von der Action eigenständig angelegt und es bedarf keiner weiteren Vorbereitung des Datensatz-Repository. Für das Deployment der Website durch [GitHub-Pages](https://pages.github.com/) muss in den Einstellungen der entsprechende Branch ausgewählt werden. 
+Die Website ist in Angular 12 geschrieben und wird mittels der Action [OpenData-Website](#Action-"RKI-OpenData-Website") transpiliert und innerhalb des GitHub Datensatz-Repositories in einen eigenen Branch [(siehe Inputs)](#Inputs) gepusht. Der Branch wird von der Action eigenständig angelegt und es bedarf keiner weiteren Vorbereitung des Datensatz-Repository. Für das Deployment der Website durch [GitHub-Pages](https://pages.github.com/) muss in den Einstellungen der entsprechende Branch ausgewählt werden. 
 
-Die Website benötigt kein Backend, da die genutzten Daten mittels der Action [createDatasourceJson](#Action-createDatasourceJson) erzeugt werden. Im folgenden wird kurz die Datenstruktur der datasource.json beschrieben.
+Die Website benötigt kein Backend, da die genutzten Daten mittels der Action [createDatasourceJsonAction](#Action-"Create-datasource.json") erzeugt werden. Im folgenden wird kurz die Datenstruktur der datasource.json beschrieben.
 
 ### datasource.json
 
-Alle Daten der Website sind in der `/app/data/datasource.json` gespeichert. Diese wird mit Hilfe der [GitHub-Action](#createDatasourceJson) erzeugt und hat folgende Struktur:
+Alle Daten der Website sind in der `/app/data/datasource.json` gespeichert. Diese wird mit Hilfe der Action "Create datasource.json" erzeugt und hat folgende Struktur:
 
 ```typescript
 export interface OpenDataDatasource {
