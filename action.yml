@@ -1,5 +1,5 @@
-name: "Build Opendata website and deploy"
-description: "BAM"
+name: "Bulid and deploy Opendata-Website"
+description: "Die Action "Bulid and deploy Opendata-Website" erzeugt und deployed eine Datensatz Website des aufrufenden Datensatz-Repositories"
 inputs:
   GH_TOKEN:
     description: "Github token"
@@ -7,7 +7,7 @@ inputs:
     required: true
   WEBSITE_BRANCH:
     description: "Branch to deploy the website"
-    default: "gh-pages"
+    default: "opendata-website"
     required: false
 runs:
   using: "composite"
@@ -15,7 +15,7 @@ runs:
     - name: Pull OpenDataPage
       uses: actions/checkout@v2
       with:
-        repository: "whoohoo86/gh-open-data-page"
+        repository: "robert-koch-institut/OpenData-Website"
 
     - name: Create datasource.json
       uses: ./createDatasourceJsonAction
