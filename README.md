@@ -15,11 +15,11 @@ Das GitHub Repository "RKI OpenData-Website" ist lizenziert unter der [MIT Licen
 
 ## Einleitung 
 
-Das [RKI](https.//www.rki.de) stellt in GitHub [offene Datensätze](https://github.com/robert-koch-institut/) zur Nachnutzung bereit. Für mit GitHub weniger vertraute Nutzer:innen stellt die Nutzung von GitHub jedoch teilweise eine Herausfoderung dar. Um diesen einen niederschwelligen Zugang zu den bereitgestellten Daten und Kontextinformationen zu bieten, haben wir auf Basis von GitHub-Actions ein Deployment von Datensatz eigenen Websites über GitHub-Pages entwickelt. Die Datensatz-Websites orientiert sich an der Cooperate Identity des RKI, ermöglicht das einfache Herunterladen von Daten und das schnelle Erfassten der Datensatzdokumentation. Für die FAIRness der Nachnutzung werden ebenfalls Kernelement, wie Lizenz und Zitationsinformationen, angezeigt. 
+Das [RKI](https.//www.rki.de) stellt in GitHub [offene Datensätze](https://github.com/robert-koch-institut/) zur Nachnutzung bereit. Für mit GitHub weniger vertraute Nutzer:innen stellt die Nutzung von GitHub jedoch teilweise eine Herausfoderung dar. Um diesen einen niederschwelligen Zugang zu den bereitgestellten Daten und Kontextinformationen zu bieten, haben wir auf Basis von GitHub-Actions ein Deployment von Datensatz eigenen Websites über GitHub-Pages entwickelt. Die Datensatz-Websites orientiert sich an der Cooperate Identity des RKI, ermöglicht das einfache Herunterladen von Daten und das schnelle erfassen der Datensatzdokumentation. Für die FAIRness der Nachnutzung werden ebenfalls Kernelement, wie Lizenz und Zitationsinformationen, angezeigt. 
 
-Das Repository stellt eine Action und den zugehörigen Quellcode für die Erzeugung und Veröffentlichung von Datensatz-Websites des RKIs bereit. Es handelt sich dabei um eine Angular-Website, welche als Datenbasis [Daten und Metadaten](#website) eines Datensatz-Repositories nutzt. Die Website kommt somit ohne Backend aus und wird dadurch einfach wiederverwendbar. 
+Das Repository stellt eine Action und den zugehörigen Quellcode für die Erzeugung und Veröffentlichung von Datensatz-Websites des RKIs bereit. Es handelt sich dabei um eine Angular-Website, welche als Datenbasis [Daten und Metadaten](#website) ein Datensatz-Repositories nutzt. Die Website kommt somit ohne Backend aus und wird dadurch einfach wiederverwendbar.
 
-Besteht Interesse Datensatz-Websites für eigene Datensätze, auf Basis des bereitgestellten Codes, zu nutzen, dann kontaktieren sie uns unter [opendata@rki.de](mailto:opendata@rki.de) oder via GitHub-Issues.
+Besteht Interesse die Datensatz-Website für eigene Datensätze, auf Basis des bereitgestellten Codes, zu nutzen, dann kontaktieren Sie uns unter [opendata@rki.de](mailto:opendata@rki.de) oder via GitHub-Issues.
 
 ## Voraussetzungen
 
@@ -39,12 +39,13 @@ Für die erfolgreiche Erzeugung einer Datensatz-Website mit GitHub-Actions muss 
 
 Die Datei- und Ordnerstruktur des Datensatz-Repositories wird auf der Datensatz-Website ebenfalls abgebildet. Es wird daher empfohlen die Ordnerstruktur übersichtlich zu halten und die relevanten Daten möglichst im Root-Verzeichnis (oberstes Verzeichnisebene) abzulegen.
 
-## Deployment mit GitHub-Actions 
+## Deployment mit GitHub-Actions
 
 Die Erstellung der Datensatz-Website erfolgt durch zwei GitHub-Actions, beide sind im vorliegenden Repository enthalten. 
-Im Unterordner [`/createDatasourceJson/`](/createDatasourceJson/) befindest sich eine Action, die, auf Basis der Daten und Metadaten des Datensatz-Repositories, die datasource.json für das spätere Depolyment erstellt.  
-Über die im Root-Verzeichnis enthaltene [action.yml](#Action-RKI-Datensatz-Website) stelt des Repository selbst eine aufrufbare Action dar. Die [action.yml](#Action-RKI-Datensatz-Website) enthält alle Schritte, um die Datensatz-Website für eigene Datensatz-Repositories zu bauen und deployen. Die [createDatasourceJson](/createDatasourceJson/) ist dabei ein Teilschritt des Workflows der [action.yml](#Action-RKI-Datensatz-Website).  
-Damit die Actions erfolgreich ausgeführt werden können, müssen die oben genannten [Voraussetzungen](#voraussetzungen) erfüllt sein.
+Im Unterordner [`/createDatasourceJson/`](/createDatasourceJson/) befindest sich eine Action, die mittels der Github-API alle für die Website benötigten Daten zusammenträgt und in eine JSON-Datei schreibt (./src/app/data/datasource.json).
+
+Über die im Root-Verzeichnis enthaltene [action.yml](#Action-RKI-Datensatz-Website) stelt das Repository selbst eine aufrufbare Action dar. Die [action.yml](#Action-RKI-Datensatz-Website) enthält alle Schritte, um die Datensatz-Website für eigene Datensatz-Repositories zu bauen und deployen. Die [createDatasourceJson](/createDatasourceJson/) ist dabei ein Teilschritt des Workflows der [action.yml](#Action-RKI-Datensatz-Website).  
+Damit die Action erfolgreich ausgeführt werden kann, müssen die oben genannten [Voraussetzungen](#voraussetzungen) erfüllt sein.
 
 ### Action "createDatasourceJson"
 
@@ -80,20 +81,20 @@ inputs:
     required: true
   WEBSITE_BRANCH:
     description: "Branch to deploy the website"
-    default: "opendatawebsite"
+    default: "opendata-website"
     required: false
 ```
 | Input          | Required | Default          | Beschreibung |
 | -------------- | -------- | ---------------  | ------------ |
 | GH_TOKEN       | true     | $                | Ein GitHub Token, welches Zugriff auf das Repository hat. Dieses wird benötigt, um die datasource.json über die GitHub-API zu erzeugen. |
-| WEBSITE_BRANCH | false    | "opendatawebsite" | Der Name des Branchs, in den die Website deployt wird. |
+| WEBSITE_BRANCH | false    | "opendata-website" | Der Name des Branchs, in den die Website deployt wird. |
 
 ## Implementierung im Datensatz-Repository
 
 Zwei Schritte sind für die Implementierung innerhalb eines Datensatz-Repositories nötig:
 
 1. Anlegen eines Workflows im Ordner `.github/workflows/` der die Action aufruft
-2. Festlegung des Source Branches in den Einstellungen des Datensatz-Repositories für die GitHub Pages
+2. Festlegung des Source Branches in den Einstellungen des Datensatz-Repositories für die [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) 
 
 ### Anlegen eines Workflows
 
